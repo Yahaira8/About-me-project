@@ -11,6 +11,6 @@ Personal profile and portfolio web application built with React, TypeScript, Vit
 - **Contact & Connect**: Direct contact details, quick-copy email, and a working note form with local storage persistence.
 
 ## Development
-- Dev Server: `npm run dev` (starts on `http://0.0.0.0:3000`)
+- Dev Server: `npm run dev` (starts on `http://0.0.0.0:5000`)
 - Build: `npm run build`
 - Lint: `npm run lint`
