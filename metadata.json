@@ -1,0 +1,8 @@
+{
+  "name": "About Me",
+  "description": "Personal profile and portfolio showcasing bio, passions, skills, creative projects, and contact information.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
