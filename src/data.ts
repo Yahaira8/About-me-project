@@ -3,15 +3,15 @@ import { Profile, SkillCategory, Project, TriviaItem, Milestone } from './types'
 export const profileData: Profile = {
   name: 'Yahaira Papin',
   pronouns: 'she/her',
-  title: 'Creative Frontend Developer & Designer',
-  location: 'New York, NY',
+  title: 'High School Freshman & Aspiring Registered Nurse',
+  location: 'San Diego, CA',
   email: 'yahairapapin@gmail.com',
   github: 'https://github.com/Yahaira8',
-  statusMessage: 'Building engaging web experiences & exploring creative interfaces',
+  statusMessage: 'Learning hands-on web design with Mr. Benrud • BJJ & Crochet',
   bio: [
-    "Hello and welcome! I'm Yahaira, a passionate web creator focused on crafting intuitive, interactive, and visually delightful web applications.",
-    "I enjoy turning creative ideas into polished software — from charming thematic experiences like interactive pet galleries to educational tools and modern web apps.",
-    "When I'm not coding, you can find me exploring digital photography, learning about animal care & wildlife preservation, and experimenting with new creative design patterns."
+    "Hello! My name is Yahaira Papin, and I am currently a high school freshman learning hands-on web design, with my teacher Mr.Benrud. I take pride in building functional, clean, and visually pleasing digital experiences that express my personal style and passions.",
+    "My life is filled with a balanced mix of athletic discipline and creative handiwork. I spend my training hours on the mat practicing Brazilian Jiu Jitsu to build resilience and mental focus, while dedicating my relaxation time to designing handmade crochet plushies.",
+    "Looking ahead, my core career aspiration is to transition into healthcare and become a Registered Nurse (RN). I am motivated by a strong passion for helping others, providing compassionate care, and making a direct, positive impact on patients' lives every single day."
   ]
 };
 
@@ -38,12 +38,12 @@ export const skillsData: SkillCategory[] = [
     ]
   },
   {
-    title: 'Interests & Values',
+    title: 'Passions & Pursuits',
     iconName: 'Sparkles',
     skills: [
-      { name: 'Animal Advocacy & Pet Care', level: 'Passion', description: 'Informed pet nutrition, breed personalities, rescue care' },
-      { name: 'Nature & Wildlife Ecology', level: 'Passion', description: 'Monarch butterfly conservation and environmental education' },
-      { name: 'Continuous Learning', level: 'Ongoing', description: 'Always expanding frontend engineering and design horizons' }
+      { name: 'Brazilian Jiu Jitsu', level: 'Training', description: 'Building athletic discipline, resilience, and mental focus on the mat' },
+      { name: 'Handmade Crochet', level: 'Creative Craft', description: 'Designing handmade crochet plushies with patience and artistry' },
+      { name: 'Healthcare & Nursing', level: 'Career Goal', description: 'Aspiring to become a compassionate Registered Nurse (RN)' }
     ]
   }
 ];
@@ -93,44 +93,44 @@ export const projectsData: Project[] = [
 export const triviaQuestions: TriviaItem[] = [
   {
     id: 'trivia-1',
-    question: "Which web experience featured custom paw print and dog bone mouse cursors?",
-    options: ["Photos & Breed Explorer", "Weather Dashboard", "Task Tracker", "Audio Synthesizer"],
+    question: "What martial art does Yahaira practice on the mat to build resilience and mental focus?",
+    options: ["Brazilian Jiu Jitsu", "Karate", "Taekwondo", "Judo"],
     correctIndex: 0,
-    explanation: "Yahaira built the delightful 'Photos' dog-themed gallery with custom paw-print cursors and personality trait cards!"
+    explanation: "Yahaira trains in Brazilian Jiu Jitsu to develop athletic discipline, resilience, and mental focus!"
   },
   {
     id: 'trivia-2',
-    question: "Which insect's migration and life cycle inspired educational matching activities?",
-    options: ["Honeybee", "Monarch Butterfly", "Dragonfly", "Ladybug"],
-    correctIndex: 1,
-    explanation: "Yahaira created engaging interactive matching activities and quizzes about monarch butterflies!"
+    question: "What creative handiwork does Yahaira design during relaxation time?",
+    options: ["Handmade crochet plushies", "Woodworking", "Origami", "Glassblowing"],
+    correctIndex: 0,
+    explanation: "Yahaira loves designing handmade crochet plushies with patience, care, and creative styling!"
   },
   {
     id: 'trivia-3',
-    question: "What is Yahaira's primary focus when creating digital experiences?",
-    options: ["Complex enterprise legacy systems", "Crafting intuitive, delightful, and human-friendly web apps", "Data mining algorithms only", "Command-line terminal utilities"],
-    correctIndex: 1,
-    explanation: "Yahaira specializes in user-centered design, combining expressive interfaces with solid modern frontend engineering."
+    question: "What is Yahaira's core future career aspiration in healthcare?",
+    options: ["Registered Nurse (RN)", "Hospital Architect", "Pharmacist", "Medical Equipment Designer"],
+    correctIndex: 0,
+    explanation: "Yahaira aspires to become a Registered Nurse (RN) to provide compassionate patient care and make a daily positive difference."
   }
 ];
 
 export const journeyMilestones: Milestone[] = [
   {
-    year: 'Present',
-    title: 'Modern Frontend Development & Interactive Design',
-    organization: 'Independent Projects & Creative Work',
-    description: 'Designing and coding dynamic web apps using React, TypeScript, and modern styling libraries.'
+    year: 'Current',
+    title: 'Web Design & Digital Craft',
+    organization: 'High School Freshman with Mr. Benrud',
+    description: 'Learning hands-on web design, creating clean, functional, and visually pleasing digital experiences.'
   },
   {
-    year: 'Projects',
-    title: 'Interactive Applications & Thematic Portfolios',
-    organization: 'GitHub & Web Showcase',
-    description: 'Created the Dog Breed Explorer gallery and interactive digital learning activities.'
+    year: 'Discipline',
+    title: 'Brazilian Jiu Jitsu Training',
+    organization: 'On the Mat',
+    description: 'Developing athletic discipline, resilience, and sharp mental focus through consistent martial arts training.'
   },
   {
-    year: 'Foundations',
-    title: 'Exploration of Web Technologies',
-    organization: 'Self-Directed Learning & Practice',
-    description: 'Built foundational knowledge in HTML, CSS, JavaScript, and responsive design principles.'
+    year: 'Future Goal',
+    title: 'Healthcare & Registered Nursing (RN)',
+    organization: 'Career Aspiration',
+    description: 'Motivated by a strong passion to help others, provide compassionate care, and make a direct positive impact on patients.'
   }
 ];

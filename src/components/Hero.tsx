@@ -57,7 +57,7 @@ export const Hero = () => {
 
             {/* Introductory statement */}
             <p className="text-stone-600 text-base leading-relaxed max-w-xl mx-auto md:mx-0 mb-8">
-              Passionate about building responsive, accessible web interfaces that merge creative visual flair with solid modern code. Dedicated to lifelong learning and creating joyful digital experiences.
+              High school freshman learning hands-on web design with Mr. Benrud. Dedicated to athletic discipline on the mat in Brazilian Jiu Jitsu, crafting handmade crochet plushies, and preparing for a future career as a compassionate Registered Nurse (RN).
             </p>
 
             {/* Action Buttons */}
@@ -130,30 +130,30 @@ export const Hero = () => {
                   <h2 className="text-lg font-bold text-stone-900">
                     {profileData.name}
                   </h2>
-                  <p className="text-xs text-stone-500">Frontend Enthusiast</p>
+                  <p className="text-xs text-stone-500">Freshman & Web Design Student</p>
                 </div>
 
                 <div className="pt-3 border-t border-stone-100 grid grid-cols-2 gap-3 text-left">
                   <div className="p-2.5 rounded-lg bg-stone-50 border border-stone-100">
                     <span className="block text-[11px] text-stone-400 font-medium uppercase tracking-wider">
-                      Focus
+                      Discipline
                     </span>
                     <span className="text-xs font-semibold text-stone-800">
-                      React & Web
+                      Jiu Jitsu
                     </span>
                   </div>
                   <div className="p-2.5 rounded-lg bg-stone-50 border border-stone-100">
                     <span className="block text-[11px] text-stone-400 font-medium uppercase tracking-wider">
-                      Design
+                      Craft
                     </span>
                     <span className="text-xs font-semibold text-stone-800">
-                      UI & Interaction
+                      Crochet Plushies
                     </span>
                   </div>
                 </div>
 
                 <div className="pt-2 text-xs text-stone-600 italic">
-                  "Believing every web experience should feel human, thoughtful, and fun."
+                  "Building clean digital experiences while pursuing athletic discipline and compassionate healthcare."
                 </div>
               </div>
             </div>

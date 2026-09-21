@@ -34,22 +34,22 @@ export const AboutSection = () => {
                   <Compass className="w-4 h-4" />
                 </div>
                 <h3 className="text-sm font-semibold text-stone-900 mb-1">
-                  Creative Exploration
+                  Brazilian Jiu Jitsu
                 </h3>
                 <p className="text-xs text-stone-600 leading-normal">
-                  Always testing fresh web standards, playful cursors, and custom interaction patterns to delight visitors.
+                  Training hours on the mat to build athletic discipline, resilience, and sharp mental focus.
                 </p>
               </div>
 
               <div className="p-4 rounded-xl bg-white border border-stone-200 shadow-2xs">
-                <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center mb-3">
+                <div className="w-8 h-8 rounded-lg bg-rose-100 text-rose-800 flex items-center justify-center mb-3">
                   <Heart className="w-4 h-4" />
                 </div>
                 <h3 className="text-sm font-semibold text-stone-900 mb-1">
-                  Community & Nature
+                  Crochet Craft & Healthcare
                 </h3>
                 <p className="text-xs text-stone-600 leading-normal">
-                  Deeply interested in pet advocacy, monarch butterfly ecology, and accessible digital education.
+                  Designing handmade plushies during downtime while preparing for a future career as a compassionate Registered Nurse (RN).
                 </p>
               </div>
             </div>
