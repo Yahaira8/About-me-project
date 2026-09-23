@@ -1,6 +1,13 @@
 @import "tailwindcss";
 
 @layer base {
+  :root {
+    --color-main: #f7a6df;
+    --color-accent: #ffdef5;
+    --color-main-dark: #831859;
+    --color-main-hover: #f28ecc;
+  }
+
   body {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   }

@@ -7,8 +7,8 @@ export const AboutSection = () => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="mb-12 text-center md:text-left">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-stone-100 text-stone-700 text-xs font-semibold uppercase tracking-wider mb-3">
-            <User className="w-3.5 h-3.5 text-amber-700" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#ffdef5] border border-[#f7a6df]/60 text-[#831859] text-xs font-semibold uppercase tracking-wider mb-3">
+            <User className="w-3.5 h-3.5 text-[#831859]" />
             <span>Background & Story</span>
           </div>
           <h2
@@ -29,8 +29,8 @@ export const AboutSection = () => {
             ))}
 
             <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="p-4 rounded-xl bg-white border border-stone-200 shadow-2xs">
-                <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center mb-3">
+              <div className="p-4 rounded-xl bg-white border border-[#f7a6df]/40 shadow-2xs">
+                <div className="w-8 h-8 rounded-lg bg-[#ffdef5] text-[#831859] border border-[#f7a6df]/50 flex items-center justify-center mb-3">
                   <Compass className="w-4 h-4" />
                 </div>
                 <h3 className="text-sm font-semibold text-stone-900 mb-1">
@@ -41,8 +41,8 @@ export const AboutSection = () => {
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl bg-white border border-stone-200 shadow-2xs">
-                <div className="w-8 h-8 rounded-lg bg-rose-100 text-rose-800 flex items-center justify-center mb-3">
+              <div className="p-4 rounded-xl bg-white border border-[#f7a6df]/40 shadow-2xs">
+                <div className="w-8 h-8 rounded-lg bg-[#ffdef5] text-[#831859] border border-[#f7a6df]/50 flex items-center justify-center mb-3">
                   <Heart className="w-4 h-4" />
                 </div>
                 <h3 className="text-sm font-semibold text-stone-900 mb-1">
@@ -59,22 +59,22 @@ export const AboutSection = () => {
           <div className="lg:col-span-5 space-y-6">
             <div
               id="journey-timeline-card"
-              className="p-6 rounded-2xl bg-white border border-stone-200 shadow-xs"
+              className="p-6 rounded-2xl bg-white border border-[#f7a6df]/40 shadow-xs"
             >
               <div className="flex items-center gap-2 mb-5">
-                <Award className="w-4 h-4 text-amber-700" />
+                <Award className="w-4 h-4 text-[#831859]" />
                 <h3 className="text-sm font-bold text-stone-900 uppercase tracking-wider">
                   Development Journey
                 </h3>
               </div>
 
-              <div className="space-y-6 relative before:absolute before:left-3 before:top-2 before:bottom-2 before:w-0.5 before:bg-stone-200">
+              <div className="space-y-6 relative before:absolute before:left-3 before:top-2 before:bottom-2 before:w-0.5 before:bg-[#ffdef5]">
                 {journeyMilestones.map((milestone, idx) => (
                   <div key={idx} className="relative pl-7 group">
                     {/* Bullet */}
-                    <div className="absolute left-1.5 top-1.5 w-3.5 h-3.5 rounded-full bg-white border-2 border-amber-600 group-hover:scale-110 transition-transform"></div>
+                    <div className="absolute left-1.5 top-1.5 w-3.5 h-3.5 rounded-full bg-[#ffdef5] border-2 border-[#f7a6df] group-hover:scale-110 transition-transform"></div>
                     <div>
-                      <span className="text-[11px] font-bold text-amber-700 uppercase tracking-wider">
+                      <span className="text-[11px] font-bold text-[#831859] uppercase tracking-wider">
                         {milestone.year}
                       </span>
                       <h4 className="text-sm font-semibold text-stone-900">
@@ -92,6 +92,34 @@ export const AboutSection = () => {
                   </div>
                 ))}
               </div>
+            </div>
+
+            {/* Featured Media Showcase (Home page: 2nd required media) */}
+            <div
+              id="home-featured-media-card"
+              className="p-5 rounded-2xl bg-white border border-[#f7a6df]/50 shadow-xs"
+            >
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs font-bold text-[#831859] uppercase tracking-wider">
+                  Featured Creative Media
+                </span>
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#ffdef5] text-[#831859] border border-[#f7a6df]/50">
+                  Crochet Craft
+                </span>
+              </div>
+              <div className="relative rounded-xl overflow-hidden aspect-video mb-3 border border-stone-200">
+                <img
+                  src={profileData.featuredMediaUrl}
+                  alt="Yahaira Papin - Handmade Crochet Plushie Art"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <h4 className="text-sm font-bold text-stone-900 mb-1">
+                Handmade Crochet Plushie Artwork
+              </h4>
+              <p className="text-xs text-stone-600 leading-relaxed">
+                {profileData.featuredMediaCaption}
+              </p>
             </div>
           </div>
         </div>

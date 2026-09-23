@@ -5,13 +5,13 @@ export const SkillsSection = () => {
   const getCategoryIcon = (iconName: string) => {
     switch (iconName) {
       case 'Code':
-        return <Code className="w-5 h-5 text-amber-800" />;
+        return <Code className="w-5 h-5 text-[#831859]" />;
       case 'Palette':
-        return <Palette className="w-5 h-5 text-amber-800" />;
+        return <Palette className="w-5 h-5 text-[#831859]" />;
       case 'Sparkles':
-        return <Sparkles className="w-5 h-5 text-amber-800" />;
+        return <Sparkles className="w-5 h-5 text-[#831859]" />;
       default:
-        return <Code className="w-5 h-5 text-amber-800" />;
+        return <Code className="w-5 h-5 text-[#831859]" />;
     }
   };
 
@@ -20,8 +20,8 @@ export const SkillsSection = () => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-stone-100 text-stone-700 text-xs font-semibold uppercase tracking-wider mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-amber-700" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#ffdef5] border border-[#f7a6df]/60 text-[#831859] text-xs font-semibold uppercase tracking-wider mb-3">
+            <Sparkles className="w-3.5 h-3.5 text-[#831859]" />
             <span>Core Competencies</span>
           </div>
           <h2
@@ -41,11 +41,11 @@ export const SkillsSection = () => {
             <div
               key={index}
               id={`skills-category-card-${index}`}
-              className="p-6 rounded-2xl bg-stone-50 border border-stone-200 flex flex-col justify-between"
+              className="p-6 rounded-2xl bg-stone-50 border border-[#f7a6df]/30 hover:border-[#f7a6df]/70 transition-colors flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="w-10 h-10 rounded-xl bg-white border border-stone-200 flex items-center justify-center shadow-2xs">
+                  <div className="w-10 h-10 rounded-xl bg-[#ffdef5] border border-[#f7a6df]/50 flex items-center justify-center shadow-2xs">
                     {getCategoryIcon(category.iconName)}
                   </div>
                   <div>
@@ -62,13 +62,13 @@ export const SkillsSection = () => {
                   {category.skills.map((skill, skillIdx) => (
                     <div
                       key={skillIdx}
-                      className="p-3.5 rounded-xl bg-white border border-stone-200/70 shadow-2xs"
+                      className="p-3.5 rounded-xl bg-white border border-stone-200/80 shadow-2xs"
                     >
                       <div className="flex items-center justify-between gap-2 mb-1">
                         <span className="text-xs font-bold text-stone-900">
                           {skill.name}
                         </span>
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-stone-100 text-stone-700 border border-stone-200">
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#ffdef5] text-[#831859] border border-[#f7a6df]/50">
                           {skill.level}
                         </span>
                       </div>
@@ -80,9 +80,9 @@ export const SkillsSection = () => {
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-stone-200/60 flex items-center gap-1.5 text-[11px] text-stone-400">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                <span>Actively utilized in current projects</span>
+              <div className="mt-6 pt-4 border-t border-stone-200/60 flex items-center gap-1.5 text-[11px] text-stone-500">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#831859]" />
+                <span>Actively utilized in current work</span>
               </div>
             </div>
           ))}

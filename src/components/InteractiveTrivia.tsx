@@ -43,8 +43,8 @@ export const InteractiveTrivia = () => {
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center max-w-xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-amber-100/80 text-amber-900 text-xs font-semibold uppercase tracking-wider mb-3">
-            <HelpCircle className="w-3.5 h-3.5 text-amber-800" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#ffdef5] border border-[#f7a6df]/60 text-[#831859] text-xs font-semibold uppercase tracking-wider mb-3">
+            <HelpCircle className="w-3.5 h-3.5 text-[#831859]" />
             <span>Interactive Mini-Quiz</span>
           </div>
           <h2
@@ -61,7 +61,7 @@ export const InteractiveTrivia = () => {
         {/* Trivia Container */}
         <div
           id="interactive-trivia-box"
-          className="p-6 sm:p-8 rounded-2xl bg-stone-50 border border-stone-200 shadow-sm"
+          className="p-6 sm:p-8 rounded-2xl bg-stone-50 border border-[#f7a6df]/40 shadow-sm"
         >
           {!isCompleted ? (
             <div>
@@ -75,7 +75,7 @@ export const InteractiveTrivia = () => {
 
               <div className="w-full bg-stone-200 h-1.5 rounded-full overflow-hidden mb-6">
                 <div
-                  className="bg-amber-600 h-full transition-all duration-300"
+                  className="bg-[#f7a6df] h-full transition-all duration-300"
                   style={{
                     width: `${((currentStep + (isAnswerSubmitted ? 1 : 0)) / triviaQuestions.length) * 100}%`,
                   }}
@@ -94,7 +94,7 @@ export const InteractiveTrivia = () => {
                   const isCorrect = idx === currentQ.correctIndex;
 
                   let optionStyle =
-                    'bg-white border-stone-200 text-stone-800 hover:border-amber-400 hover:bg-amber-50/30';
+                    'bg-white border-stone-200 text-stone-800 hover:border-[#f7a6df] hover:bg-[#ffdef5]/40';
 
                   if (isAnswerSubmitted) {
                     if (isCorrect) {
@@ -133,8 +133,8 @@ export const InteractiveTrivia = () => {
 
               {/* Explanation & Next Button */}
               {isAnswerSubmitted && (
-                <div className="p-4 rounded-xl bg-amber-50/70 border border-amber-200/80 mb-6 animate-in fade-in">
-                  <p className="text-xs text-amber-950 leading-relaxed font-medium">
+                <div className="p-4 rounded-xl bg-[#ffdef5]/70 border border-[#f7a6df]/70 mb-6 animate-in fade-in">
+                  <p className="text-xs text-[#831859] leading-relaxed font-medium">
                     {currentQ.explanation}
                   </p>
                 </div>
@@ -146,7 +146,7 @@ export const InteractiveTrivia = () => {
                     id="trivia-next-question-btn"
                     type="button"
                     onClick={handleNext}
-                    className="px-6 py-2.5 rounded-xl bg-stone-900 hover:bg-stone-800 text-stone-50 text-xs font-semibold transition-colors"
+                    className="px-6 py-2.5 rounded-xl bg-[#f7a6df] hover:bg-[#f28ecc] border border-[#f7a6df] text-stone-900 text-xs font-semibold transition-colors shadow-2xs"
                   >
                     {currentStep < triviaQuestions.length - 1 ? 'Next Question' : 'View Results'}
                   </button>
@@ -156,7 +156,7 @@ export const InteractiveTrivia = () => {
           ) : (
             /* Results Screen */
             <div className="text-center py-6 space-y-5">
-              <div className="w-16 h-16 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center mx-auto shadow-inner">
+              <div className="w-16 h-16 rounded-2xl bg-[#ffdef5] border-2 border-[#f7a6df] text-[#831859] flex items-center justify-center mx-auto shadow-inner">
                 <Award className="w-8 h-8" />
               </div>
 
@@ -173,7 +173,7 @@ export const InteractiveTrivia = () => {
               <p className="text-xs text-stone-600 max-w-md mx-auto leading-relaxed">
                 {score === triviaQuestions.length
                   ? "Perfect score! You're an expert on Yahaira's creative journey and projects!"
-                  : "Great job! Yahaira loves creating interactive web projects, animal care galleries, and engaging experiences."}
+                  : "Great job! Yahaira loves creating interactive web projects, training Jiu Jitsu, and designing crochet plushies."}
               </p>
 
               <div className="pt-3">
@@ -181,7 +181,7 @@ export const InteractiveTrivia = () => {
                   id="trivia-restart-quiz-btn"
                   type="button"
                   onClick={handleReset}
-                  className="px-5 py-2.5 rounded-xl bg-stone-900 hover:bg-stone-800 text-stone-50 text-xs font-semibold inline-flex items-center gap-2 transition-colors"
+                  className="px-5 py-2.5 rounded-xl bg-[#f7a6df] hover:bg-[#f28ecc] border border-[#f7a6df] text-stone-900 text-xs font-semibold inline-flex items-center gap-2 transition-colors shadow-2xs"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
                   <span>Play Again</span>

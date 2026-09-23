@@ -19,8 +19,8 @@ export const ProjectsSection = () => {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-stone-100 text-stone-700 text-xs font-semibold uppercase tracking-wider mb-3">
-              <FolderGit2 className="w-3.5 h-3.5 text-amber-700" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#ffdef5] border border-[#f7a6df]/60 text-[#831859] text-xs font-semibold uppercase tracking-wider mb-3">
+              <FolderGit2 className="w-3.5 h-3.5 text-[#831859]" />
               <span>Selected Work</span>
             </div>
             <h2
@@ -32,7 +32,7 @@ export const ProjectsSection = () => {
           </div>
 
           {/* Category Filter Pills */}
-          <div className="flex flex-wrap gap-1.5 p-1 rounded-xl bg-stone-200/70">
+          <div className="flex flex-wrap gap-1.5 p-1 rounded-xl bg-stone-200/70 border border-stone-200">
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -41,8 +41,8 @@ export const ProjectsSection = () => {
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                   selectedCategory === cat
-                    ? 'bg-white text-stone-900 shadow-2xs font-semibold'
-                    : 'text-stone-600 hover:text-stone-900 hover:bg-stone-200/50'
+                    ? 'bg-[#f7a6df] text-stone-900 shadow-2xs font-semibold border border-[#f7a6df]'
+                    : 'text-stone-600 hover:text-stone-900 hover:bg-[#ffdef5]/50'
                 }`}
               >
                 {cat}
@@ -57,16 +57,16 @@ export const ProjectsSection = () => {
             <div
               key={project.id}
               id={`project-card-${project.id}`}
-              className="p-6 rounded-2xl bg-white border border-stone-200 hover:border-stone-300 transition-all shadow-2xs hover:shadow-xs flex flex-col justify-between"
+              className="p-6 rounded-2xl bg-white border border-[#f7a6df]/30 hover:border-[#f7a6df]/70 transition-all shadow-2xs hover:shadow-xs flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-start justify-between gap-3 mb-3">
-                  <span className="text-[11px] font-bold text-amber-700 uppercase tracking-wider">
+                  <span className="text-[11px] font-bold text-[#831859] uppercase tracking-wider">
                     {project.category}
                   </span>
                   {project.featured && (
-                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-100/70 border border-amber-200 text-amber-900 text-[10px] font-semibold">
-                      <Star className="w-3 h-3 fill-amber-600 text-amber-600" />
+                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#ffdef5] border border-[#f7a6df] text-[#831859] text-[10px] font-semibold">
+                      <Star className="w-3 h-3 fill-[#831859] text-[#831859]" />
                       Featured
                     </span>
                   )}
@@ -89,7 +89,7 @@ export const ProjectsSection = () => {
                   {project.tags.map((tag, tagIdx) => (
                     <span
                       key={tagIdx}
-                      className="px-2.5 py-1 rounded-md bg-stone-100 text-stone-600 text-[10px] font-medium"
+                      className="px-2.5 py-1 rounded-md bg-[#ffdef5]/60 border border-[#f7a6df]/40 text-[#831859] text-[10px] font-medium"
                     >
                       {tag}
                     </span>
@@ -101,7 +101,7 @@ export const ProjectsSection = () => {
                   <button
                     type="button"
                     onClick={() => setActiveModalProject(project)}
-                    className="text-xs font-semibold text-stone-700 hover:text-stone-900 hover:underline"
+                    className="text-xs font-semibold text-stone-700 hover:text-[#831859] hover:underline"
                   >
                     View Details
                   </button>
@@ -111,7 +111,7 @@ export const ProjectsSection = () => {
                       href={project.repoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs font-semibold text-amber-800 hover:text-amber-900"
+                      className="inline-flex items-center gap-1 text-xs font-semibold text-[#831859] hover:underline"
                     >
                       <span>Repository</span>
                       <ExternalLink className="w-3.5 h-3.5" />
@@ -133,20 +133,20 @@ export const ProjectsSection = () => {
         >
           <div
             id="project-detail-modal-card"
-            className="w-full max-w-lg bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-stone-200 relative"
+            className="w-full max-w-lg bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-[#f7a6df]/50 relative"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               type="button"
               onClick={() => setActiveModalProject(null)}
-              className="absolute top-4 right-4 p-2 text-stone-400 hover:text-stone-700 hover:bg-stone-100 rounded-lg"
+              className="absolute top-4 right-4 p-2 text-stone-400 hover:text-stone-700 hover:bg-[#ffdef5] rounded-lg transition-colors"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
             </button>
 
             <div className="mb-4">
-              <span className="text-xs font-bold text-amber-700 uppercase tracking-wider">
+              <span className="text-xs font-bold text-[#831859] uppercase tracking-wider">
                 {activeModalProject.category}
               </span>
               <h3 className="text-2xl font-serif font-bold text-stone-900 mt-1">
@@ -169,7 +169,7 @@ export const ProjectsSection = () => {
                 {activeModalProject.tags.map((tag, idx) => (
                   <span
                     key={idx}
-                    className="px-3 py-1 rounded-md bg-stone-100 border border-stone-200 text-stone-800 text-xs font-medium"
+                    className="px-3 py-1 rounded-md bg-[#ffdef5]/60 border border-[#f7a6df]/40 text-[#831859] text-xs font-medium"
                   >
                     {tag}
                   </span>
@@ -190,7 +190,7 @@ export const ProjectsSection = () => {
                   href={activeModalProject.repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-2 rounded-xl bg-stone-900 hover:bg-stone-800 text-stone-50 text-xs font-semibold inline-flex items-center gap-1.5"
+                  className="px-5 py-2 rounded-xl bg-[#f7a6df] hover:bg-[#f28ecc] text-stone-900 border border-[#f7a6df] text-xs font-semibold inline-flex items-center gap-1.5 shadow-2xs"
                 >
                   <span>Open GitHub Repo</span>
                   <ExternalLink className="w-3.5 h-3.5" />

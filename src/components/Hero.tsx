@@ -27,8 +27,8 @@ export const Hero = () => {
             className="flex-1 text-center md:text-left"
           >
             {/* Status Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-stone-100 border border-stone-200 text-xs font-medium text-stone-700 mb-6 shadow-2xs">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ffdef5] border border-[#f7a6df]/70 text-xs font-semibold text-[#831859] mb-6 shadow-2xs">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#f7a6df] animate-pulse"></span>
               <span>{profileData.statusMessage}</span>
             </div>
 
@@ -37,18 +37,18 @@ export const Hero = () => {
               id="hero-heading"
               className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-stone-900 tracking-tight leading-[1.15] mb-4"
             >
-              Hi, I'm <span className="text-amber-800">{profileData.name}</span>
+              {profileData.name}
             </h1>
 
             {/* Subtitle */}
-            <p className="text-lg sm:text-xl text-stone-600 font-medium mb-3">
+            <p className="text-lg sm:text-xl text-[#831859] font-medium mb-3">
               {profileData.title}
             </p>
 
             {/* Location & Pronouns */}
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 text-xs text-stone-500 mb-6">
               <span className="inline-flex items-center gap-1">
-                <MapPin className="w-3.5 h-3.5 text-stone-400" />
+                <MapPin className="w-3.5 h-3.5 text-[#831859]" />
                 {profileData.location}
               </span>
               <span className="w-1 h-1 rounded-full bg-stone-300"></span>
@@ -65,26 +65,26 @@ export const Hero = () => {
               <a
                 id="hero-projects-cta-btn"
                 href="#projects"
-                className="px-6 py-3 rounded-xl bg-stone-900 hover:bg-stone-800 text-stone-50 font-medium text-sm transition-all shadow-sm hover:shadow-md flex items-center gap-2"
+                className="px-6 py-3 rounded-xl bg-[#f7a6df] hover:bg-[#f28ecc] border border-[#f7a6df] text-stone-900 font-semibold text-sm transition-all shadow-xs hover:shadow-sm flex items-center gap-2"
               >
                 <span>Explore Projects</span>
-                <ArrowDown className="w-4 h-4 text-stone-400" />
+                <ArrowDown className="w-4 h-4 text-stone-700" />
               </a>
 
               <button
                 id="hero-copy-email-btn"
                 type="button"
                 onClick={handleCopyEmail}
-                className="px-5 py-3 rounded-xl bg-stone-100 hover:bg-stone-200 border border-stone-200 text-stone-800 font-medium text-sm transition-colors flex items-center gap-2"
+                className="px-5 py-3 rounded-xl bg-[#ffdef5] hover:bg-[#f7a6df]/30 border border-[#f7a6df]/60 text-stone-900 font-medium text-sm transition-colors flex items-center gap-2"
               >
                 {copied ? (
                   <>
-                    <Check className="w-4 h-4 text-emerald-600" />
-                    <span className="text-emerald-700">Copied to Clipboard!</span>
+                    <Check className="w-4 h-4 text-[#831859]" />
+                    <span className="text-[#831859] font-semibold">Copied to Clipboard!</span>
                   </>
                 ) : (
                   <>
-                    <Copy className="w-4 h-4 text-stone-500" />
+                    <Copy className="w-4 h-4 text-[#831859]" />
                     <span>Copy Email</span>
                   </>
                 )}
@@ -95,7 +95,7 @@ export const Hero = () => {
                 href={profileData.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-xl bg-stone-100 hover:bg-stone-200 border border-stone-200 text-stone-700 transition-colors"
+                className="p-3 rounded-xl bg-white hover:bg-[#ffdef5] border border-stone-200 hover:border-[#f7a6df] text-stone-700 transition-colors"
                 title="Open GitHub"
                 aria-label="Open GitHub"
               >
@@ -113,16 +113,24 @@ export const Hero = () => {
           >
             <div
               id="hero-profile-card"
-              className="relative p-6 rounded-2xl bg-white border border-stone-200 shadow-sm"
+              className="relative p-6 rounded-2xl bg-white border border-[#f7a6df]/50 shadow-xs"
             >
               {/* Decorative Accent */}
-              <div className="absolute top-4 right-4 text-amber-600">
-                <Sparkles className="w-5 h-5 opacity-70" />
+              <div className="absolute top-4 right-4 text-[#831859]">
+                <Sparkles className="w-5 h-5 opacity-80" />
               </div>
 
-              {/* Avatar Box */}
-              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-gradient-to-br from-amber-100 to-amber-200 border border-amber-300 flex items-center justify-center text-amber-900 font-serif font-bold text-3xl sm:text-4xl shadow-inner mb-5">
-                YP
+              {/* Student Portrait Box */}
+              <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border-2 border-[#f7a6df] shadow-md mb-5 bg-[#ffdef5]">
+                <img
+                  id="student-photo-above-fold"
+                  src={profileData.avatarUrl}
+                  alt={`${profileData.name} - Student Portrait`}
+                  className="w-full h-full object-cover"
+                />
+                <span className="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-white/90 text-[10px] font-bold text-[#831859] shadow-2xs">
+                  Student
+                </span>
               </div>
 
               <div className="space-y-3">
@@ -130,20 +138,20 @@ export const Hero = () => {
                   <h2 className="text-lg font-bold text-stone-900">
                     {profileData.name}
                   </h2>
-                  <p className="text-xs text-stone-500">Freshman & Web Design Student</p>
+                  <p className="text-xs text-[#831859] font-medium">Freshman & Web Design Student</p>
                 </div>
 
                 <div className="pt-3 border-t border-stone-100 grid grid-cols-2 gap-3 text-left">
-                  <div className="p-2.5 rounded-lg bg-stone-50 border border-stone-100">
-                    <span className="block text-[11px] text-stone-400 font-medium uppercase tracking-wider">
+                  <div className="p-2.5 rounded-lg bg-[#ffdef5]/60 border border-[#f7a6df]/40">
+                    <span className="block text-[11px] text-[#831859] font-semibold uppercase tracking-wider">
                       Discipline
                     </span>
                     <span className="text-xs font-semibold text-stone-800">
                       Jiu Jitsu
                     </span>
                   </div>
-                  <div className="p-2.5 rounded-lg bg-stone-50 border border-stone-100">
-                    <span className="block text-[11px] text-stone-400 font-medium uppercase tracking-wider">
+                  <div className="p-2.5 rounded-lg bg-[#ffdef5]/60 border border-[#f7a6df]/40">
+                    <span className="block text-[11px] text-[#831859] font-semibold uppercase tracking-wider">
                       Craft
                     </span>
                     <span className="text-xs font-semibold text-stone-800">

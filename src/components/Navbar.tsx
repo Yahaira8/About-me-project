@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
-import { GitBranch, Mail, Menu, X } from 'lucide-react';
+import { GitBranch, Mail, Menu, X, Lock } from 'lucide-react';
 import { profileData } from '../data';
 
 interface NavbarProps {
-  activeSection: string;
+  currentPage: string;
+  onNavigate: (page: string) => void;
 }
 
-export const Navbar = ({ activeSection }: NavbarProps) => {
+export const Navbar = ({ currentPage, onNavigate }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -18,60 +19,71 @@ export const Navbar = ({ activeSection }: NavbarProps) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Trivia', href: '#trivia' },
-    { name: 'Contact', href: '#contact' },
+  const navPages = [
+    { id: 'home', name: 'Home' },
+    { id: 'media', name: 'Media' },
+    { id: 'future', name: 'Future' },
+    { id: 'jiu-jitsu', name: 'Jiu Jitsu' },
+    { id: 'crochet', name: 'Crochet' },
+    { id: 'admin', name: 'Admin', icon: Lock },
   ];
+
+  const handleLinkClick = (pageId: string) => {
+    onNavigate(pageId);
+    setMobileMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <header
       id="main-navbar"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-stone-50/90 backdrop-blur-md border-b border-stone-200/80 shadow-xs py-3'
-          : 'bg-transparent py-5'
+          ? 'bg-stone-50/95 backdrop-blur-md border-b border-stone-200/80 shadow-xs py-2.5'
+          : 'bg-stone-50/80 backdrop-blur-xs border-b border-stone-200/50 py-3.5'
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         {/* Brand */}
-        <a
+        <button
           id="navbar-brand-link"
-          href="#"
-          className="flex items-center gap-2.5 text-stone-900 group"
+          type="button"
+          onClick={() => handleLinkClick('home')}
+          className="flex items-center gap-2.5 text-stone-900 group cursor-pointer text-left"
         >
-          <div className="w-9 h-9 rounded-xl bg-stone-900 text-stone-50 flex items-center justify-center font-bold text-base shadow-xs group-hover:bg-amber-600 transition-colors">
+          <div className="w-9 h-9 rounded-xl bg-stone-900 text-stone-50 flex items-center justify-center font-bold text-base shadow-xs group-hover:bg-[#f7a6df] group-hover:text-stone-900 transition-colors">
             YP
           </div>
           <div className="flex flex-col">
             <span className="font-semibold text-stone-900 text-sm sm:text-base leading-tight">
               {profileData.name}
             </span>
-            <span className="text-[11px] text-stone-500 font-normal">
-              Portfolio & Profile
+            <span className="text-[11px] text-[#831859] font-medium">
+              Portfolio & Creative Showcase
             </span>
           </div>
-        </a>
+        </button>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Navigation (Universal Across All 6 Pages) */}
         <nav id="desktop-navigation" className="hidden md:flex items-center gap-1">
-          {navLinks.map((link) => {
-            const isActive = activeSection === link.href.replace('#', '');
+          {navPages.map((page) => {
+            const isActive = currentPage === page.id;
+            const Icon = page.icon;
             return (
-              <a
-                key={link.name}
-                id={`nav-link-${link.name.toLowerCase()}`}
-                href={link.href}
-                className={`px-3.5 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+              <button
+                key={page.id}
+                type="button"
+                id={`nav-link-${page.id}`}
+                onClick={() => handleLinkClick(page.id)}
+                className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
                   isActive
-                    ? 'text-stone-900 bg-stone-200/70 font-semibold'
+                    ? 'text-[#831859] bg-[#ffdef5] font-bold border border-[#f7a6df] shadow-2xs'
                     : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
                 }`}
               >
-                {link.name}
-              </a>
+                {Icon && <Icon className="w-3 h-3 text-[#831859]" />}
+                <span>{page.name}</span>
+              </button>
             );
           })}
         </nav>
@@ -89,14 +101,24 @@ export const Navbar = ({ activeSection }: NavbarProps) => {
           >
             <GitBranch className="w-4 h-4" />
           </a>
-          <a
+          <button
             id="navbar-contact-cta"
-            href="#contact"
-            className="flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-stone-900 bg-amber-200/80 hover:bg-amber-300 rounded-lg transition-colors"
+            type="button"
+            onClick={() => {
+              if (currentPage !== 'home') {
+                onNavigate('home');
+                setTimeout(() => {
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+              } else {
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-stone-900 bg-[#f7a6df] hover:bg-[#f28ecc] border border-[#f7a6df] rounded-lg transition-colors shadow-2xs cursor-pointer"
           >
-            <Mail className="w-3.5 h-3.5 text-stone-800" />
-            <span>Get in Touch</span>
-          </a>
+            <Mail className="w-3.5 h-3.5 text-stone-900" />
+            <span>Contact</span>
+          </button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -118,34 +140,51 @@ export const Navbar = ({ activeSection }: NavbarProps) => {
           className="md:hidden bg-stone-50 border-b border-stone-200 px-4 pt-3 pb-5 shadow-lg animate-in fade-in"
         >
           <div className="flex flex-col gap-1.5">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                id={`mobile-nav-link-${link.name.toLowerCase()}`}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2.5 rounded-lg text-stone-800 hover:bg-stone-100 font-medium text-sm"
-              >
-                {link.name}
-              </a>
-            ))}
+            {navPages.map((page) => {
+              const isActive = currentPage === page.id;
+              const Icon = page.icon;
+              return (
+                <button
+                  key={page.id}
+                  type="button"
+                  id={`mobile-nav-link-${page.id}`}
+                  onClick={() => handleLinkClick(page.id)}
+                  className={`w-full text-left px-3 py-2 rounded-lg font-semibold text-xs sm:text-sm flex items-center justify-between ${
+                    isActive
+                      ? 'text-[#831859] bg-[#ffdef5] font-bold border border-[#f7a6df]'
+                      : 'text-stone-800 hover:bg-stone-100'
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    {Icon && <Icon className="w-3.5 h-3.5 text-[#831859]" />}
+                    <span>{page.name}</span>
+                  </div>
+                  {isActive && <span className="text-[10px] text-[#831859] font-bold">Active</span>}
+                </button>
+              );
+            })}
             <div className="pt-3 border-t border-stone-200 flex items-center justify-between">
               <a
                 href={profileData.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-stone-600 hover:text-stone-900 py-1"
+                className="flex items-center gap-2 text-xs text-stone-600 hover:text-stone-900 py-1"
               >
-                <GitBranch className="w-4 h-4" />
+                <GitBranch className="w-3.5 h-3.5" />
                 <span>GitHub @Yahaira8</span>
               </a>
-              <a
-                href="#contact"
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-3.5 py-1.5 text-xs font-semibold text-stone-900 bg-amber-200 rounded-lg"
+              <button
+                type="button"
+                onClick={() => {
+                  handleLinkClick('home');
+                  setTimeout(() => {
+                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                  }, 100);
+                }}
+                className="px-3 py-1 text-xs font-semibold text-stone-900 bg-[#f7a6df] hover:bg-[#f28ecc] border border-[#f7a6df] rounded-lg"
               >
-                Contact
-              </a>
+                Contact Note
+              </button>
             </div>
           </div>
         </div>

@@ -7,6 +7,21 @@ export interface Profile {
   email: string;
   github: string;
   statusMessage: string;
+  avatarUrl?: string;
+  featuredMediaUrl?: string;
+  featuredMediaCaption?: string;
+}
+
+export interface MediaCardItem {
+  id: string;
+  type: 'image' | 'video' | 'social';
+  title: string;
+  mediaUrl: string;
+  thumbnailUrl?: string;
+  caption: string;
+  category: string;
+  tags?: string[];
+  externalUrl?: string;
 }
 
 export interface SkillCategory {
