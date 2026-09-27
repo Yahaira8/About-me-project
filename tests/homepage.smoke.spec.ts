@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { triviaQuestions } from '../src/data';
 
 test('home page renders hero content and usable primary navigation', async ({ page }) => {
   await page.goto('/');
@@ -139,16 +140,24 @@ test('project details modal supports keyboard users and restores focus', async (
   await expect(trigger).toBeFocused();
 });
 
-test('trivia answer can advance to the next question', async ({ page }) => {
+test('trivia shows the final score and resets when played again', async ({ page }) => {
   await page.goto('/');
 
   const trivia = page.locator('#interactive-trivia-box');
-  await expect(trivia.getByText(/Question 1 of \d+/)).toBeVisible();
-  await trivia.locator('#trivia-option-0-0').click();
-  await expect(trivia.getByText('Current Score: 1')).toBeVisible();
+  for (const [questionIndex, question] of triviaQuestions.entries()) {
+    await expect(trivia.getByText(`Question ${questionIndex + 1} of ${triviaQuestions.length}`)).toBeVisible();
+    await trivia.locator(`#trivia-option-${questionIndex}-${question.correctIndex}`).click();
+    await expect(trivia.getByText(`Current Score: ${questionIndex + 1}`)).toBeVisible();
+    await trivia.locator('#trivia-next-question-btn').click();
+  }
 
-  await trivia.locator('#trivia-next-question-btn').click();
-  await expect(trivia.getByText(/Question 2 of \d+/)).toBeVisible();
+  await expect(trivia.getByRole('heading', { name: 'Quiz Completed!' })).toBeVisible();
+  await expect(trivia.getByText(`You scored ${triviaQuestions.length} out of ${triviaQuestions.length}!`)).toBeVisible();
+
+  await trivia.locator('#trivia-restart-quiz-btn').click();
+  await expect(trivia.getByText(`Question 1 of ${triviaQuestions.length}`)).toBeVisible();
+  await expect(trivia.getByRole('heading', { name: triviaQuestions[0].question })).toBeVisible();
+  await expect(trivia.getByText('Current Score: 0')).toBeVisible();
 });
 
 test('valid contact message confirms without reloading the page', async ({ page }) => {
