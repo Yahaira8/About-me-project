@@ -14,3 +14,8 @@ Personal profile and portfolio web application built with React, TypeScript, Vit
 - Dev Server: `npm run dev` (starts on `http://0.0.0.0:5000`)
 - Build: `npm run build`
 - Lint: `npm run lint`
+- Browser smoke check: `npm run test:smoke`
+
+The smoke check starts the Vite server when needed, opens the home page in Chromium,
+and verifies the hero content plus the About, Skills, Projects, Trivia, and Contact
+navigation targets.
