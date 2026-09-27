@@ -28,6 +28,14 @@ export const Navbar = ({ currentPage, onNavigate }: NavbarProps) => {
     { id: 'admin', name: 'Admin', icon: Lock },
   ];
 
+  const homeSections = [
+    { id: 'about', name: 'About' },
+    { id: 'skills', name: 'Skills' },
+    { id: 'projects', name: 'Projects' },
+    { id: 'trivia', name: 'Trivia' },
+    { id: 'contact', name: 'Contact' },
+  ];
+
   const handleLinkClick = (pageId: string) => {
     onNavigate(pageId);
     setMobileMenuOpen(false);
@@ -140,6 +148,18 @@ export const Navbar = ({ currentPage, onNavigate }: NavbarProps) => {
           className="md:hidden bg-stone-50 border-b border-stone-200 px-4 pt-3 pb-5 shadow-lg animate-in fade-in"
         >
           <div className="flex flex-col gap-1.5">
+            {currentPage === 'home' &&
+              homeSections.map((section) => (
+                <a
+                  key={section.id}
+                  id={`mobile-section-link-${section.id}`}
+                  href={`#${section.id}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="w-full text-left px-3 py-2 rounded-lg font-semibold text-xs sm:text-sm text-stone-800 hover:bg-stone-100"
+                >
+                  {section.name}
+                </a>
+              ))}
             {navPages.map((page) => {
               const isActive = currentPage === page.id;
               const Icon = page.icon;
