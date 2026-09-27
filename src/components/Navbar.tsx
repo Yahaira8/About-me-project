@@ -136,79 +136,81 @@ export const Navbar = ({ currentPage, onNavigate }: NavbarProps) => {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="md:hidden p-2 rounded-lg text-stone-700 hover:bg-stone-100 transition-colors"
           aria-label="Toggle navigation menu"
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-navigation-dropdown"
         >
           {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
 
       {/* Mobile Dropdown */}
-      {mobileMenuOpen && (
-        <div
-          id="mobile-navigation-dropdown"
-          className="md:hidden max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain bg-stone-50 border-b border-stone-200 px-4 pt-3 pb-5 shadow-lg animate-in fade-in"
-        >
-          <div className="flex flex-col gap-1.5">
-            {currentPage === 'home' &&
-              homeSections.map((section) => (
-                <a
-                  key={section.id}
-                  id={`mobile-section-link-${section.id}`}
-                  href={`#${section.id}`}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="w-full text-left px-3 py-2 rounded-lg font-semibold text-xs sm:text-sm text-stone-800 hover:bg-stone-100"
-                >
-                  {section.name}
-                </a>
-              ))}
-            {navPages.map((page) => {
-              const isActive = currentPage === page.id;
-              const Icon = page.icon;
-              return (
-                <button
-                  key={page.id}
-                  type="button"
-                  id={`mobile-nav-link-${page.id}`}
-                  onClick={() => handleLinkClick(page.id)}
-                  className={`w-full text-left px-3 py-2 rounded-lg font-semibold text-xs sm:text-sm flex items-center justify-between ${
-                    isActive
-                      ? 'text-[#831859] bg-[#ffdef5] font-bold border border-[#f7a6df]'
-                      : 'text-stone-800 hover:bg-stone-100'
-                  }`}
-                >
-                  <div className="flex items-center gap-2">
-                    {Icon && <Icon className="w-3.5 h-3.5 text-[#831859]" />}
-                    <span>{page.name}</span>
-                  </div>
-                  {isActive && <span className="text-[10px] text-[#831859] font-bold">Active</span>}
-                </button>
-              );
-            })}
-            <div className="pt-3 border-t border-stone-200 flex items-center justify-between">
+      <nav
+        id="mobile-navigation-dropdown"
+        aria-label="Mobile navigation"
+        hidden={!mobileMenuOpen}
+        className="md:hidden max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain bg-stone-50 border-b border-stone-200 px-4 pt-3 pb-5 shadow-lg animate-in fade-in"
+      >
+        <div className="flex flex-col gap-1.5">
+          {currentPage === 'home' &&
+            homeSections.map((section) => (
               <a
-                href={profileData.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-xs text-stone-600 hover:text-stone-900 py-1"
+                key={section.id}
+                id={`mobile-section-link-${section.id}`}
+                href={`#${section.id}`}
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full text-left px-3 py-2 rounded-lg font-semibold text-xs sm:text-sm text-stone-800 hover:bg-stone-100"
               >
-                <GitBranch className="w-3.5 h-3.5" />
-                <span>GitHub @Yahaira8</span>
+                {section.name}
               </a>
+            ))}
+          {navPages.map((page) => {
+            const isActive = currentPage === page.id;
+            const Icon = page.icon;
+            return (
               <button
+                key={page.id}
                 type="button"
-                onClick={() => {
-                  handleLinkClick('home');
-                  setTimeout(() => {
-                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                  }, 100);
-                }}
-                className="px-3 py-1 text-xs font-semibold text-stone-900 bg-[#f7a6df] hover:bg-[#f28ecc] border border-[#f7a6df] rounded-lg"
+                id={`mobile-nav-link-${page.id}`}
+                onClick={() => handleLinkClick(page.id)}
+                className={`w-full text-left px-3 py-2 rounded-lg font-semibold text-xs sm:text-sm flex items-center justify-between ${
+                  isActive
+                    ? 'text-[#831859] bg-[#ffdef5] font-bold border border-[#f7a6df]'
+                    : 'text-stone-800 hover:bg-stone-100'
+                }`}
               >
-                Contact Note
+                <div className="flex items-center gap-2">
+                  {Icon && <Icon className="w-3.5 h-3.5 text-[#831859]" />}
+                  <span>{page.name}</span>
+                </div>
+                {isActive && <span className="text-[10px] text-[#831859] font-bold">Active</span>}
               </button>
-            </div>
+            );
+          })}
+          <div className="pt-3 border-t border-stone-200 flex items-center justify-between">
+            <a
+              href={profileData.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-xs text-stone-600 hover:text-stone-900 py-1"
+            >
+              <GitBranch className="w-3.5 h-3.5" />
+              <span>GitHub @Yahaira8</span>
+            </a>
+            <button
+              type="button"
+              onClick={() => {
+                handleLinkClick('home');
+                setTimeout(() => {
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+              }}
+              className="px-3 py-1 text-xs font-semibold text-stone-900 bg-[#f7a6df] hover:bg-[#f28ecc] border border-[#f7a6df] rounded-lg"
+            >
+              Contact Note
+            </button>
           </div>
         </div>
-      )}
+      </nav>
     </header>
   );
 };

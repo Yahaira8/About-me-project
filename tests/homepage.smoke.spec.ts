@@ -32,6 +32,26 @@ test('mobile menu links to every portfolio section', async ({ page }) => {
   }
 });
 
+test('mobile menu exposes its expanded state to assistive technology', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+
+  const toggle = page.locator('#mobile-menu-toggle-btn');
+  const menu = page.locator('#mobile-navigation-dropdown');
+
+  await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+  await expect(toggle).toHaveAttribute('aria-controls', 'mobile-navigation-dropdown');
+  await expect(menu).toBeHidden();
+
+  await toggle.click();
+  await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+  await expect(menu).toBeVisible();
+
+  await toggle.click();
+  await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+  await expect(menu).toBeHidden();
+});
+
 test('mobile menu options remain reachable on a short screen', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 568 });
   await page.goto('/');
