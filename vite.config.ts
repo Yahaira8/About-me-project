@@ -42,6 +42,32 @@ function apiPlugin(): Plugin {
           return;
         }
 
+        if (url === '/api/upload-photo' && req.method === 'POST') {
+          let body = '';
+          req.on('data', (chunk) => {
+            body += chunk;
+          });
+          req.on('end', () => {
+            try {
+              const { dataUrl } = JSON.parse(body);
+              if (dataUrl && typeof dataUrl === 'string' && dataUrl.startsWith('data:image/')) {
+                const base64Data = dataUrl.replace(/^data:image\/\w+;base64,/, '');
+                const buffer = Buffer.from(base64Data, 'base64');
+                fs.writeFileSync(path.resolve(process.cwd(), 'public', 'yahaira_bjj_promotion.jpg'), buffer);
+                res.setHeader('Content-Type', 'application/json');
+                res.end(JSON.stringify({ success: true }));
+                return;
+              }
+              res.statusCode = 400;
+              res.end(JSON.stringify({ error: 'Invalid image format' }));
+            } catch {
+              res.statusCode = 500;
+              res.end(JSON.stringify({ error: 'Failed to save uploaded photo' }));
+            }
+          });
+          return;
+        }
+
         if (url === '/api/contact' && req.method === 'GET') {
           try {
             const data = fs.readFileSync(dataFile, 'utf-8');

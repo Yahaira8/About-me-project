@@ -9,8 +9,8 @@ export const profileData: Profile = {
   github: 'https://github.com/Yahaira8',
   statusMessage: 'Learning hands-on web design with Mr. Benrud • BJJ & Crochet',
   avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80',
-  featuredMediaUrl: 'https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=800&q=80',
-  featuredMediaCaption: 'Handmade Crochet Craft — Intricate plushie yarn creations designed with patience and care.',
+  featuredMediaUrl: 'https://i.imgur.com/jareEOL.jpeg',
+  featuredMediaCaption: 'Handmade Crochet Jellyfishes — Custom yarn creations with curly tentacles sculpted with patience and artistry.',
   bio: [
     "Hello! My name is Yahaira Papin, and I am currently a high school freshman learning hands-on web design, with my teacher Mr.Benrud. I take pride in building functional, clean, and visually pleasing digital experiences that express my personal style and passions.",
     "My life is filled with a balanced mix of athletic discipline and creative handiwork. I spend my training hours on the mat practicing Brazilian Jiu Jitsu to build resilience and mental focus, while dedicating my relaxation time to designing handmade crochet plushies.",
@@ -142,11 +142,11 @@ export const mediaGalleryItems: MediaCardItem[] = [
   {
     id: 'media-1',
     type: 'image',
-    title: 'Handmade Crochet Bunny Plushie',
-    mediaUrl: 'https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=800&q=80',
-    caption: 'Soft pastel handmade bunny plushie crafted using soft chenille yarn and intricate single crochet stitches during evening relaxation time.',
+    title: 'Handmade Crochet Jellyfishes',
+    mediaUrl: 'https://i.imgur.com/jareEOL.jpeg',
+    caption: 'Handmade collection of colorful crochet jellyfishes made with textured yarn, intricate spiral tentacles, and playful personality.',
     category: 'Crochet Craft',
-    tags: ['Handmade', 'Crochet', 'Creative Craft']
+    tags: ['Handmade', 'Crochet', 'Jellyfish', 'Creative Craft']
   },
   {
     id: 'media-2',
@@ -226,12 +226,11 @@ export const mediaGalleryItems: MediaCardItem[] = [
   },
   {
     id: 'media-10',
-    type: 'social',
-    title: 'Jiu Jitsu Mat Progress & Stripes',
-    mediaUrl: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80',
-    caption: 'Another tough week of sparring and technique drilling completed. Growth happens when you step out of your comfort zone every day!',
-    category: 'Social Post',
-    externalUrl: 'https://instagram.com',
-    tags: ['BJJ', 'Growth', 'Fitness']
+    type: 'image',
+    title: 'Jiu Jitsu Belt Promotion Ceremony',
+    mediaUrl: 'https://i.imgur.com/IzzqkAx.jpeg',
+    caption: 'Coach presenting the newly earned belt to Yahaira Papin ("Yami P.") on the academy mats—celebrating discipline, persistence, and continuous technical growth in Brazilian Jiu Jitsu.',
+    category: 'Jiu Jitsu',
+    tags: ['BJJ', 'BeltPromotion', 'YamiP', 'Discipline']
   }
 ];
