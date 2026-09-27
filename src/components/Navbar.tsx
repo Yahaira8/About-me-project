@@ -145,7 +145,7 @@ export const Navbar = ({ currentPage, onNavigate }: NavbarProps) => {
       {mobileMenuOpen && (
         <div
           id="mobile-navigation-dropdown"
-          className="md:hidden bg-stone-50 border-b border-stone-200 px-4 pt-3 pb-5 shadow-lg animate-in fade-in"
+          className="md:hidden max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain bg-stone-50 border-b border-stone-200 px-4 pt-3 pb-5 shadow-lg animate-in fade-in"
         >
           <div className="flex flex-col gap-1.5">
             {currentPage === 'home' &&

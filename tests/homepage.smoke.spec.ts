@@ -32,6 +32,46 @@ test('mobile menu links to every portfolio section', async ({ page }) => {
   }
 });
 
+test('mobile menu options remain reachable on a short screen', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 568 });
+  await page.goto('/');
+  await page.locator('#mobile-menu-toggle-btn').click();
+
+  const dropdown = page.locator('#mobile-navigation-dropdown');
+  await expect(dropdown).toBeVisible();
+
+  const options = [
+    ...['about', 'skills', 'projects', 'trivia', 'contact'].map((section) =>
+      page.locator(`#mobile-section-link-${section}`),
+    ),
+    ...['home', 'media', 'future', 'jiu-jitsu', 'crochet', 'admin'].map((pageName) =>
+      page.locator(`#mobile-nav-link-${pageName}`),
+    ),
+    dropdown.getByRole('link', { name: /GitHub/ }),
+    dropdown.getByRole('button', { name: 'Contact Note' }),
+  ];
+
+  for (const option of options) {
+    await option.scrollIntoViewIfNeeded();
+    await expect(option).toBeVisible();
+
+    const fitsInDropdownAndViewport = await option.evaluate((element) => {
+      const optionRect = element.getBoundingClientRect();
+      const dropdownRect = document
+        .getElementById('mobile-navigation-dropdown')!
+        .getBoundingClientRect();
+
+      return (
+        optionRect.top >= dropdownRect.top &&
+        optionRect.bottom <= dropdownRect.bottom &&
+        optionRect.bottom <= window.innerHeight
+      );
+    });
+
+    expect(fitsInDropdownAndViewport).toBe(true);
+  }
+});
+
 test('project details modal opens and closes', async ({ page }) => {
   await page.goto('/');
 
