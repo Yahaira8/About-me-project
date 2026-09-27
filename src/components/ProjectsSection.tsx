@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ExternalLink, FolderGit2, Star, X } from 'lucide-react';
 import { projectsData } from '../data';
 import { Project } from '../types';
@@ -6,12 +6,58 @@ import { Project } from '../types';
 export const ProjectsSection = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
+  const modalTitleRef = useRef<HTMLHeadingElement>(null);
+  const modalTriggerRef = useRef<HTMLButtonElement | null>(null);
 
   const categories = ['All', 'Interactive Web App', 'Portfolio & Profile', 'Educational Experience'];
 
   const filteredProjects = selectedCategory === 'All'
     ? projectsData
     : projectsData.filter((p) => p.category === selectedCategory);
+
+  useEffect(() => {
+    if (!activeModalProject) return;
+
+    const modalTitle = modalTitleRef.current;
+    const modalTrigger = modalTriggerRef.current;
+    const modal = document.getElementById('project-detail-modal-card');
+    modalTitle?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setActiveModalProject(null);
+        return;
+      }
+
+      if (event.key !== 'Tab' || !modal) return;
+
+      const focusableElements = modal.querySelectorAll<HTMLElement>(
+        'button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])',
+      );
+      const firstFocusable = focusableElements[0];
+      const lastFocusable = focusableElements[focusableElements.length - 1];
+
+      if (event.shiftKey && (document.activeElement === firstFocusable || document.activeElement === modalTitle)) {
+        event.preventDefault();
+        lastFocusable?.focus();
+      } else if (!event.shiftKey && (document.activeElement === lastFocusable || document.activeElement === modalTitle)) {
+        if (document.activeElement === modalTitle && firstFocusable) {
+          // Let the first Tab from the title move naturally to the close button.
+          return;
+        }
+
+        event.preventDefault();
+        firstFocusable?.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      modalTrigger?.focus();
+    };
+  }, [activeModalProject]);
 
   return (
     <section id="projects" className="py-20 border-t border-stone-200 bg-stone-50/50">
@@ -100,7 +146,10 @@ export const ProjectsSection = () => {
                 <div className="pt-4 border-t border-stone-100 flex items-center justify-between">
                   <button
                     type="button"
-                    onClick={() => setActiveModalProject(project)}
+                    onClick={(event) => {
+                      modalTriggerRef.current = event.currentTarget;
+                      setActiveModalProject(project);
+                    }}
                     className="text-xs font-semibold text-stone-700 hover:text-[#831859] hover:underline"
                   >
                     View Details
@@ -133,6 +182,10 @@ export const ProjectsSection = () => {
         >
           <div
             id="project-detail-modal-card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="project-detail-modal-title"
+            aria-describedby="project-detail-modal-description"
             className="w-full max-w-lg bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-[#f7a6df]/50 relative"
             onClick={(e) => e.stopPropagation()}
           >
@@ -149,7 +202,12 @@ export const ProjectsSection = () => {
               <span className="text-xs font-bold text-[#831859] uppercase tracking-wider">
                 {activeModalProject.category}
               </span>
-              <h3 className="text-2xl font-serif font-bold text-stone-900 mt-1">
+              <h3
+                ref={modalTitleRef}
+                id="project-detail-modal-title"
+                tabIndex={-1}
+                className="text-2xl font-serif font-bold text-stone-900 mt-1"
+              >
                 {activeModalProject.title}
               </h3>
               <p className="text-xs text-stone-500 font-medium mt-0.5">
@@ -157,7 +215,7 @@ export const ProjectsSection = () => {
               </p>
             </div>
 
-            <p className="text-sm text-stone-700 leading-relaxed mb-6">
+            <p id="project-detail-modal-description" className="text-sm text-stone-700 leading-relaxed mb-6">
               {activeModalProject.description}
             </p>
 

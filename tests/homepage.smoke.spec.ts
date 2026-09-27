@@ -107,6 +107,38 @@ test('project details modal opens and closes', async ({ page }) => {
   await expect(modal).toBeHidden();
 });
 
+test('project details modal supports keyboard users and restores focus', async ({ page }) => {
+  await page.goto('/');
+
+  const projectCard = page.locator('#project-card-photos-gallery');
+  const trigger = projectCard.getByRole('button', { name: 'View Details' });
+  const projectTitle = (await projectCard.locator('h3').textContent())?.trim() ?? '';
+  await trigger.focus();
+  await page.keyboard.press('Enter');
+
+  const dialog = page.getByRole('dialog', { name: projectTitle });
+  const dialogTitle = dialog.getByRole('heading', { name: projectTitle });
+  await expect(dialog).toBeVisible();
+  await expect(dialog).toHaveAttribute('aria-modal', 'true');
+  await expect(dialogTitle).toBeFocused();
+
+  const closeButton = dialog.getByRole('button', { name: 'Close', exact: true });
+  const closeIconButton = dialog.getByRole('button', { name: 'Close modal' });
+  const repositoryLink = dialog.getByRole('link', { name: 'Open GitHub Repo' });
+  await page.keyboard.press('Tab');
+  await expect(closeButton).toBeFocused();
+  await page.keyboard.press('Tab');
+  await expect(repositoryLink).toBeFocused();
+  await page.keyboard.press('Tab');
+  await expect(closeIconButton).toBeFocused();
+  await page.keyboard.press('Shift+Tab');
+  await expect(repositoryLink).toBeFocused();
+
+  await page.keyboard.press('Escape');
+  await expect(dialog).toBeHidden();
+  await expect(trigger).toBeFocused();
+});
+
 test('trivia answer can advance to the next question', async ({ page }) => {
   await page.goto('/');
 
