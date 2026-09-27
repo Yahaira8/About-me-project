@@ -1,4 +1,8 @@
 #!/bin/bash
 set -e
 
-npm ci --no-audit --no-fund
+if [ -f package-lock.json ]; then
+  npm ci --no-audit --no-fund
+else
+  npm install --no-package-lock --no-audit --no-fund
+fi
