@@ -142,11 +142,11 @@ export const mediaGalleryItems: MediaCardItem[] = [
   {
     id: 'media-1',
     type: 'image',
-    title: 'Handmade Crochet Jellyfishes',
-    mediaUrl: 'https://i.imgur.com/jareEOL.jpeg',
-    caption: 'Handmade collection of colorful crochet jellyfishes made with textured yarn, intricate spiral tentacles, and playful personality.',
-    category: 'Crochet Craft',
-    tags: ['Handmade', 'Crochet', 'Jellyfish', 'Creative Craft']
+    title: 'Pretty Camping Trip 🌲⛺',
+    mediaUrl: '/pretty-camping-trip.jpeg',
+    caption: 'It was such a memorable experience going on this really pretty camping trip! I enjoyed it so much—super pretty views, fresh air, and a wonderfully fun time spending time outdoors.',
+    category: 'Camping Trip',
+    tags: ['Camping', 'Outdoors', 'Nature']
   },
   {
     id: 'media-2',
