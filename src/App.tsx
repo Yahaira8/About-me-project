@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { GlobalAmbientBokeh } from './components/AmbientHeaderBokeh';
+import { CustomHeartCursor } from './components/CustomHeartCursor';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
@@ -58,6 +59,9 @@ export function App() {
 
   return (
     <div id="about-me-app-root" className="relative min-h-screen flex flex-col bg-stone-50 text-stone-900 font-sans">
+      {/* Custom Glowing Neon Pink Heart Cursor with Fluid Lag & Click Bursts */}
+      <CustomHeartCursor />
+
       {/* Global Persistent Floating Bokeh & Light Orbs Background */}
       <GlobalAmbientBokeh />
 

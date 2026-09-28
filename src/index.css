@@ -254,3 +254,13 @@
   will-change: transform, opacity;
 }
 
+/* ==========================================================================
+   Custom Glowing Heart Cursor Support
+   ========================================================================== */
+
+@media (pointer: fine) {
+  *, *::before, *::after {
+    cursor: none !important;
+  }
+}
+

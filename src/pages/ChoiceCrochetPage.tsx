@@ -12,6 +12,8 @@ import {
   Layers,
   Filter,
   CheckCircle2,
+  Mail,
+  Send,
 } from 'lucide-react';
 
 interface CrochetProject {
@@ -114,20 +116,6 @@ export const ChoiceCrochetPage = () => {
       description: 'A delightful pastel pink sea turtle with a vibrant berry-pink shell crafted to look like a plump ripe strawberry, featuring embroidered white seed flecks, a leafy green stem crown, and cheek blush.',
       story: 'A sweet fusion of sea life and fruit sweetness! The contrast between the pastel pink body and the bright strawberry shell makes this plushie an instant favorite.',
       tags: ['StrawberryTurtle', 'SeaLife', 'BerryShell', 'VelvetPlush', 'Kawaii']
-    },
-    {
-      id: 'crochet-frog-keychain',
-      title: 'Strawberry Froggy Pocket Pal',
-      category: 'Amigurumi',
-      status: 'Completed',
-      time: '3.0 Hours',
-      yarn: 'Sage Green & Strawberry Red Cotton Yarn',
-      technique: 'Micro-crochet rounds with mini bobble stitch eyes',
-      defaultImage: 'https://images.unsplash.com/photo-1618331835717-801e976710b2?auto=format&fit=crop&w=800&q=80',
-      isPlaceholder: true,
-      description: 'Miniature palm-sized frog wearing a sculpted strawberry beret with yellow seed stitches and silver key ring.',
-      story: 'A cheerful everyday accessory designed to clip onto backpacks and tote bags. Quick to make and a great scrap-yarn project!',
-      tags: ['Amigurumi', 'Froggy', 'StrawberryBeret', 'PocketPal']
     }
   ];
 
@@ -333,6 +321,52 @@ export const ChoiceCrochetPage = () => {
               </motion.div>
             );
           })}
+        </div>
+
+        {/* Custom Plushie Request Banner - Long ways banner like the Future Goal */}
+        <div className="neon-card-gradient p-6 sm:p-8 rounded-2xl mb-8 border border-[#f7a6df]/50 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xs">
+          <div className="flex items-start sm:items-center gap-4 sm:gap-6">
+            <div className="w-14 h-14 rounded-2xl bg-[#f7a6df] text-stone-950 flex items-center justify-center shrink-0 shadow-xs">
+              <Sparkles className="w-7 h-7" />
+            </div>
+            <div className="space-y-1.5">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-[#f7a6df] text-[#831859] text-xs font-bold uppercase tracking-wider">
+                <Heart className="w-3.5 h-3.5 fill-[#f7a6df] text-[#831859]" />
+                <span>Custom Plushies</span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-serif font-bold text-stone-900">
+                Want a custom plushie character?
+              </h3>
+              <p className="text-xs sm:text-sm text-stone-700 leading-relaxed font-medium max-w-2xl">
+                Choose your favorite Bernat Blanket or Sweet Snuggles Lite yarn color and animal!
+              </p>
+              <div className="flex flex-wrap gap-2 pt-1">
+                <span className="px-2.5 py-0.5 rounded-md bg-white/90 border border-stone-200 text-stone-700 text-[11px] font-semibold">
+                  🧶 Bernat Blanket
+                </span>
+                <span className="px-2.5 py-0.5 rounded-md bg-white/90 border border-stone-200 text-stone-700 text-[11px] font-semibold">
+                  ✨ Sweet Snuggles Lite
+                </span>
+                <span className="px-2.5 py-0.5 rounded-md bg-white/90 border border-stone-200 text-stone-700 text-[11px] font-semibold">
+                  🧸 Custom Animal & Colors
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="shrink-0 self-stretch md:self-auto flex flex-col items-center md:items-end gap-1.5 min-w-[210px]">
+            <a
+              href="mailto:yahairapapin@gmail.com?subject=Custom%20Plushie%20Request&body=Hi%20Yahaira,%0A%0AI'd%20love%20to%20request%20a%20custom%20crochet%20plushie!%0A%0AAnimal%20or%20Character:%20%0APreferred%20Yarn%20(Bernat%20Blanket%20/%20Sweet%20Snuggles%20Lite):%20%0AFavorite%20Colors:%20%0ASpecial%20Details:%20%0A%0AThank%20you!"
+              className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-[#f7a6df] to-[#ffdef5] hover:from-[#f591d5] hover:to-[#f7a6df] text-stone-950 font-bold text-sm shadow-xs hover:shadow-md transition-all border border-[#f7a6df] cursor-pointer"
+            >
+              <Mail className="w-4 h-4 text-stone-900" />
+              <span>Send Custom Request</span>
+              <Send className="w-3.5 h-3.5 text-stone-900" />
+            </a>
+            <span className="text-[11px] text-stone-500 font-medium text-center">
+              Direct email to yahairapapin@gmail.com
+            </span>
+          </div>
         </div>
 
         {/* Future Pediatric Gifting Banner */}

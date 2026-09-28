@@ -1,4 +1,4 @@
-import { HeartPulse, GraduationCap, Building2, Stethoscope, Compass, Calendar, Award } from 'lucide-react';
+import { HeartPulse, GraduationCap, Building2, Stethoscope, Compass, Calendar, Award, Sparkles, Heart, ExternalLink } from 'lucide-react';
 import { profileData } from '../data';
 
 export const FuturePage = () => {
@@ -85,25 +85,103 @@ export const FuturePage = () => {
           </p>
         </div>
 
-        {/* Long-Term Goal Banner */}
+        {/* Ultimate Accomplishable Goal Banner */}
         <div
           id="long-term-goal-banner"
-          className="neon-card-gradient p-6 sm:p-8 rounded-2xl shadow-xs mb-12"
+          className="neon-card-gradient p-6 sm:p-8 rounded-2xl shadow-xs mb-12 border border-[#f7a6df]/50"
         >
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div className="space-y-2">
-              <span className="text-xs font-bold text-[#831859] uppercase tracking-wider">
-                Realistic Long-Term Objective
-              </span>
-              <h2 className="text-xl sm:text-2xl font-serif font-bold text-stone-900">
-                Registered Nurse (RN) — Pediatric or Critical Care Medicine
+          <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-8">
+            <div className="w-full md:w-2/5 aspect-[4/3] sm:aspect-[16/10] md:aspect-square max-h-64 rounded-xl overflow-hidden border-2 border-white shadow-md flex-shrink-0 bg-white">
+              <img
+                src="https://i.imgur.com/Ju24CP8.png"
+                alt="Rady Children's Hospital"
+                className="w-full h-full object-cover object-center"
+              />
+            </div>
+            <div className="flex-1 space-y-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 border border-[#f7a6df] text-[#831859] text-xs font-bold uppercase tracking-wider shadow-xs">
+                <Sparkles className="w-3.5 h-3.5 text-[#f7a6df]" />
+                <span>Ultimate Accomplishable Goal</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-stone-900 leading-tight">
+                Work as a Registered Nurse at Rady Children's Hospital
               </h2>
-              <p className="text-xs sm:text-sm text-stone-700 leading-relaxed max-w-2xl">
-                "My core career aspiration is to provide compassionate, attentive healthcare where every patient feels heard, comforted, and protected during their most vulnerable moments."
+              <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">
+                My primary career target is to graduate with my Bachelor of Science in Nursing (BSN), pass the NCLEX-RN exam, and secure a full-time position as a Pediatric Registered Nurse at Rady Children's Hospital in San Diego. I am passionate about providing loving, high-quality pediatric care and supporting children and families during their most critical care moments.
               </p>
             </div>
-            <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-[#ffdef5] text-[#831859] border border-[#f7a6df] flex items-center justify-center shadow-inner">
-              <Stethoscope className="w-8 h-8" />
+          </div>
+        </div>
+
+        {/* Why I Want to Work at Rady Children's Card */}
+        <div
+          id="why-rady-childrens-card"
+          className="neon-card p-6 sm:p-8 rounded-2xl bg-white shadow-xs mb-12 border border-[#f7a6df]/40"
+        >
+          <div className="flex flex-col lg:flex-row items-center lg:items-start gap-6 lg:gap-8">
+            <div className="flex-1 space-y-4">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ffdef5] text-[#831859] text-xs font-bold uppercase tracking-wider">
+                  <Heart className="w-3.5 h-3.5 fill-[#f7a6df] text-[#831859]" />
+                  <span>Mission & Values</span>
+                </div>
+                <span className="text-xs font-semibold text-stone-500 uppercase tracking-wider">
+                  Pediatric Nursing Inspiration & Purpose
+                </span>
+              </div>
+
+              <div className="space-y-1">
+                <h3 className="text-2xl sm:text-3xl font-serif font-bold text-stone-900">
+                  Why I Want to Work at Rady Children's
+                </h3>
+              </div>
+
+              {/* Value Tags */}
+              <div className="flex flex-wrap gap-2 pt-1">
+                {['Pediatric Healthcare', 'Compassionate Care', 'Caring for Little Kids'].map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1 rounded-lg bg-[#ffdef5]/40 border border-[#f7a6df]/50 text-[#831859] text-xs font-bold"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {/* Paragraphs */}
+              <div className="space-y-3 text-xs sm:text-sm text-stone-700 leading-relaxed pt-2">
+                <p>
+                  Working at Rady Children's Hospital is my biggest dream because I genuinely love helping little kids. Children bring so much brightness, strength, and joy into the world, and being able to comfort them, support their families, and guide them through healing during difficult hospital stays is what drives my passion for pediatric nursing.
+                </p>
+                <p>
+                  I strongly agree with and support Rady Children's mission to restore, sustain, and enhance the health and well-being of children through compassionate, family-centered care. Their dedication to medical excellence, empathy, and child advocacy aligns perfectly with the kind of nurse I am working so hard to become.
+                </p>
+              </div>
+
+              {/* Link & CTA */}
+              <div className="mt-6 pt-5 border-t border-stone-200/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <p className="text-xs sm:text-sm text-stone-600 font-medium">
+                  Discover more about Rady Children's Hospital and explore their core values, vision, and mission:
+                </p>
+                <a
+                  href="https://www.rchsd.org/about-us/who-we-are/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#f7a6df] to-[#ffdef5] text-stone-900 font-bold text-xs sm:text-sm shadow-xs hover:shadow-md hover:scale-[1.02] transition-all flex-shrink-0 border border-[#f7a6df]"
+                >
+                  <span>Explore Rady Children's - Who We Are</span>
+                  <ExternalLink className="w-4 h-4 text-stone-800" />
+                </a>
+              </div>
+            </div>
+
+            {/* Side Image */}
+            <div className="w-full lg:w-72 xl:w-80 flex-shrink-0 aspect-[4/3] lg:aspect-[4/5] rounded-xl overflow-hidden border-2 border-[#ffdef5] shadow-md bg-stone-50 self-center lg:self-start">
+              <img
+                src="https://i.imgur.com/JmaFDla.png"
+                alt="Rady Children's Pediatric Care"
+                className="w-full h-full object-cover object-center"
+              />
             </div>
           </div>
         </div>
@@ -165,15 +243,8 @@ export const FuturePage = () => {
         </div>
 
         {/* Inspiration & Mentorship Card */}
-        <div className="neon-card mt-14 p-6 sm:p-8 rounded-2xl bg-white shadow-xs flex flex-col md:flex-row items-center gap-6">
-          <div className="w-full md:w-1/3 aspect-video rounded-xl overflow-hidden border border-stone-200">
-            <img
-              src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80"
-              alt="Medical & Nursing Career Preparation"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="flex-1 space-y-2">
+        <div className="neon-card mt-14 p-6 sm:p-8 rounded-2xl bg-white shadow-xs">
+          <div className="space-y-2">
             <h4 className="text-base font-bold text-stone-900">
               Guidance from High School to Healthcare
             </h4>
