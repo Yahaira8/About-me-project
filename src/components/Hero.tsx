@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowDown, Check, Copy, ExternalLink, MapPin, Sparkles } from 'lucide-react';
 import { profileData } from '../data';
+import { AmbientHeaderBokeh } from './AmbientHeaderBokeh';
 
 export const Hero = () => {
   const [copied, setCopied] = useState(false);
@@ -17,7 +18,10 @@ export const Hero = () => {
       id="hero-section"
       className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden"
     >
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+      {/* Subtle ambient floating bokeh and orbs in the background */}
+      <AmbientHeaderBokeh variant="hero" />
+
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
         <div className="flex flex-col md:flex-row items-center gap-10 md:gap-14">
           {/* Main Copy */}
           <motion.div
@@ -33,11 +37,14 @@ export const Hero = () => {
             </div>
 
             {/* Main Heading */}
+            <div className="text-xl sm:text-2xl font-serif text-stone-700 font-medium mb-1">
+              Hi, I'm
+            </div>
             <h1
               id="hero-heading"
-              className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-stone-900 tracking-tight leading-[1.15] mb-4"
+              className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-stone-900 tracking-tight leading-[1.15] mb-4 inline-block"
             >
-              Hi, I'm <span className="neon-flowing-glow">{profileData.name}</span>
+              <span className="neon-flowing-glow">{profileData.name}</span>
             </h1>
 
             {/* Subtitle */}

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Image, Video, Share2, Sparkles, X, ExternalLink, Maximize2, Tag, Info } from 'lucide-react';
 import { mediaGalleryItems } from '../data';
 import { MediaCardItem } from '../types';
+import { AmbientHeaderBokeh } from '../components/AmbientHeaderBokeh';
 
 export const MediaPage = () => {
   const [selectedFilter, setSelectedFilter] = useState<'all' | 'image' | 'video' | 'social'>('all');
@@ -13,8 +14,9 @@ export const MediaPage = () => {
     : mediaGalleryItems.filter((item) => item.type === selectedFilter);
 
   return (
-    <div id="media-gallery-page" className="pt-28 pb-24 bg-stone-50 min-h-screen">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <div id="media-gallery-page" className="relative pt-28 pb-24 bg-stone-50 min-h-screen overflow-hidden">
+      <AmbientHeaderBokeh variant="hero" />
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-10">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#ffdef5] border border-[#f7a6df]/60 text-[#831859] text-xs font-semibold uppercase tracking-wider mb-3">
