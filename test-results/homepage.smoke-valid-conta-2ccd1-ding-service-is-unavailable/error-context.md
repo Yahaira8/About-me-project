@@ -6,8 +6,8 @@
 
 # Test info
 
-- Name: homepage.smoke.spec.ts >> project details modal supports keyboard users and restores focus
-- Location: tests/homepage.smoke.spec.ts:111:1
+- Name: homepage.smoke.spec.ts >> valid contact message is saved locally when sending service is unavailable
+- Location: tests/homepage.smoke.spec.ts:119:1
 
 # Error details
 

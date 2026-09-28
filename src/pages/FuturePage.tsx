@@ -1,6 +1,5 @@
 import { HeartPulse, GraduationCap, Building2, Stethoscope, Compass, Calendar, Award } from 'lucide-react';
 import { profileData } from '../data';
-import { AmbientHeaderBokeh } from '../components/AmbientHeaderBokeh';
 
 export const FuturePage = () => {
   const fiveYearPlan = [
@@ -67,8 +66,7 @@ export const FuturePage = () => {
   ];
 
   return (
-    <div id="future-page" className="relative pt-28 pb-24 bg-stone-50 min-h-screen overflow-hidden">
-      <AmbientHeaderBokeh variant="hero" />
+    <div id="future-page" className="relative pt-28 pb-24 bg-transparent min-h-screen">
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">

@@ -7,7 +7,7 @@
 # Test info
 
 - Name: homepage.smoke.spec.ts >> trivia shows the final score and resets when played again
-- Location: tests/homepage.smoke.spec.ts:143:1
+- Location: tests/homepage.smoke.spec.ts:99:1
 
 # Error details
 

@@ -7,7 +7,7 @@
 # Test info
 
 - Name: homepage.smoke.spec.ts >> mobile menu exposes its expanded state to assistive technology
-- Location: tests/homepage.smoke.spec.ts:36:1
+- Location: tests/homepage.smoke.spec.ts:39:1
 
 # Error details
 

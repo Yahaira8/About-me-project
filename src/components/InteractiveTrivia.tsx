@@ -39,7 +39,7 @@ export const InteractiveTrivia = () => {
   };
 
   return (
-    <section id="trivia" className="py-20 border-t border-stone-200 bg-white">
+    <section id="trivia" className="py-20 bg-transparent">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center max-w-xl mx-auto mb-10">

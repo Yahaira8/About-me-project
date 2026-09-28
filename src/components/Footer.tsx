@@ -20,7 +20,7 @@ export const Footer = ({ onNavigate }: FooterProps) => {
   ];
 
   return (
-    <footer id="app-footer" className="py-12 border-t border-stone-200 bg-white text-stone-500 text-xs">
+    <footer id="app-footer" className="relative z-10 py-12 bg-transparent text-stone-500 text-xs">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">

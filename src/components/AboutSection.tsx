@@ -3,7 +3,7 @@ import { profileData, journeyMilestones } from '../data';
 
 export const AboutSection = () => {
   return (
-    <section id="about" className="py-20 border-t border-stone-200/80 bg-stone-50/50">
+    <section id="about" className="py-20 bg-transparent">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="mb-12 text-center md:text-left">

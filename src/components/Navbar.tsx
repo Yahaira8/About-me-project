@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { GitBranch, Mail, Menu, X, Lock } from 'lucide-react';
 import { profileData } from '../data';
-import { AmbientHeaderBokeh } from './AmbientHeaderBokeh';
 
 interface NavbarProps {
   currentPage: string;
@@ -31,8 +30,6 @@ export const Navbar = ({ currentPage, onNavigate }: NavbarProps) => {
 
   const homeSections = [
     { id: 'about', name: 'About' },
-    { id: 'skills', name: 'Skills' },
-    { id: 'projects', name: 'Projects' },
     { id: 'trivia', name: 'Trivia' },
     { id: 'contact', name: 'Contact' },
   ];
@@ -46,15 +43,12 @@ export const Navbar = ({ currentPage, onNavigate }: NavbarProps) => {
   return (
     <header
       id="main-navbar"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 overflow-hidden ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? 'bg-stone-50/95 backdrop-blur-md border-b border-stone-200/80 shadow-xs py-2.5'
           : 'bg-stone-50/80 backdrop-blur-xs border-b border-stone-200/50 py-3.5'
       }`}
     >
-      {/* Subtle ambient floating bokeh orbs behind navbar */}
-      <AmbientHeaderBokeh variant="navbar" className="opacity-50" />
-
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         {/* Brand */}
         <button

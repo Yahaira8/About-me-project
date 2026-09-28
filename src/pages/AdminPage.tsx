@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Lock, ShieldCheck, CheckCircle2, Clock, Filter, LogOut, AlertCircle, RefreshCw } from 'lucide-react';
-import { AmbientHeaderBokeh } from '../components/AmbientHeaderBokeh';
 
 interface ContactRecord {
   id: string;
@@ -124,8 +123,7 @@ export const AdminPage = () => {
   const repliedCount = messages.filter((m) => m.replied || m.status === 'replied').length;
 
   return (
-    <div id="admin-dashboard-page" className="relative pt-28 pb-24 bg-stone-50 min-h-screen overflow-hidden">
-      <AmbientHeaderBokeh variant="hero" />
+    <div id="admin-dashboard-page" className="relative pt-28 pb-24 bg-transparent min-h-screen">
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-10">

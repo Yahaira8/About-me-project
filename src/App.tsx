@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
+import { GlobalAmbientBokeh } from './components/AmbientHeaderBokeh';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
-import { SkillsSection } from './components/SkillsSection';
-import { ProjectsSection } from './components/ProjectsSection';
 import { InteractiveTrivia } from './components/InteractiveTrivia';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
@@ -31,6 +30,16 @@ export function App() {
   const [currentPage, setCurrentPage] = useState<string>(getInitialPage);
 
   useEffect(() => {
+    // Whenever changing pages, immediately stop, mute, and pause any playing video/audio
+    const mediaElements = document.querySelectorAll('video, audio');
+    mediaElements.forEach((el) => {
+      const media = el as HTMLMediaElement;
+      media.pause();
+      media.muted = true;
+    });
+  }, [currentPage]);
+
+  useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '').toLowerCase();
       if (['home', 'media', 'future', 'jiu-jitsu', 'crochet', 'admin'].includes(hash)) {
@@ -48,18 +57,19 @@ export function App() {
   };
 
   return (
-    <div id="about-me-app-root" className="min-h-screen flex flex-col bg-stone-50 text-stone-900 font-sans">
+    <div id="about-me-app-root" className="relative min-h-screen flex flex-col bg-stone-50 text-stone-900 font-sans">
+      {/* Global Persistent Floating Bokeh & Light Orbs Background */}
+      <GlobalAmbientBokeh />
+
       {/* Universal Header */}
       <Navbar currentPage={currentPage} onNavigate={handleNavigate} />
 
       {/* Main Page View */}
-      <main id="main-content" className="flex-1">
+      <main id="main-content" className="relative z-10 flex-1">
         {currentPage === 'home' && (
           <>
             <Hero />
             <AboutSection />
-            <SkillsSection />
-            <ProjectsSection />
             <InteractiveTrivia />
             <ContactSection />
           </>

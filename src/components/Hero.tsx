@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowDown, Check, Copy, ExternalLink, MapPin, Sparkles } from 'lucide-react';
 import { profileData } from '../data';
-import { AmbientHeaderBokeh } from './AmbientHeaderBokeh';
 
 export const Hero = () => {
   const [copied, setCopied] = useState(false);
@@ -16,11 +15,8 @@ export const Hero = () => {
   return (
     <section
       id="hero-section"
-      className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden"
+      className="relative pt-32 pb-16 md:pt-40 md:pb-24"
     >
-      {/* Subtle ambient floating bokeh and orbs in the background */}
-      <AmbientHeaderBokeh variant="hero" />
-
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
         <div className="flex flex-col md:flex-row items-center gap-10 md:gap-14">
           {/* Main Copy */}
@@ -71,10 +67,10 @@ export const Hero = () => {
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-3">
               <a
                 id="hero-projects-cta-btn"
-                href="#projects"
+                href="#about"
                 className="px-6 py-3 rounded-xl bg-[#f7a6df] hover:bg-[#f28ecc] border border-[#f7a6df] text-stone-900 font-semibold text-sm transition-all shadow-xs hover:shadow-sm flex items-center gap-2"
               >
-                <span>Explore Projects</span>
+                <span>About Me</span>
                 <ArrowDown className="w-4 h-4 text-stone-700" />
               </a>
 
@@ -128,15 +124,15 @@ export const Hero = () => {
               </div>
 
               {/* Student Portrait Box */}
-              <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border-2 border-[#f7a6df] shadow-md mb-5 bg-[#ffdef5]">
+              <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border-2 border-[#f7a6df] shadow-md mb-5 bg-[#ffdef5]">
                 <img
                   id="student-photo-above-fold"
                   src={profileData.avatarUrl}
                   alt={`${profileData.name} - Student Portrait`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center"
                 />
-                <span className="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-white/90 text-[10px] font-bold text-[#831859] shadow-2xs">
-                  Student
+                <span className="absolute bottom-1.5 right-1.5 px-2 py-0.5 rounded-md bg-white/95 text-[10px] font-bold text-[#831859] shadow-2xs border border-[#f7a6df]/50">
+                  Yahaira
                 </span>
               </div>
 

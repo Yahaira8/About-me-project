@@ -192,20 +192,20 @@
 
 @keyframes ambientFloatUpward {
   0% {
-    transform: translateY(110%) translateX(0px) scale(0.85);
+    transform: translateY(112vh) translateX(0px) scale(0.85);
     opacity: 0;
   }
-  15% {
-    opacity: var(--bokeh-opacity, 0.32);
+  12% {
+    opacity: var(--bokeh-opacity, 0.35);
   }
   50% {
-    transform: translateY(50%) translateX(var(--bokeh-drift, 22px)) scale(1.05);
+    transform: translateY(50vh) translateX(var(--bokeh-drift, 24px)) scale(1.05);
   }
-  85% {
-    opacity: var(--bokeh-opacity, 0.32);
+  88% {
+    opacity: var(--bokeh-opacity, 0.35);
   }
   100% {
-    transform: translateY(-20%) translateX(calc(var(--bokeh-drift, 22px) * -0.6)) scale(0.92);
+    transform: translateY(-15vh) translateX(calc(var(--bokeh-drift, 24px) * -0.6)) scale(0.92);
     opacity: 0;
   }
 }

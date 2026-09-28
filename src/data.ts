@@ -8,7 +8,7 @@ export const profileData: Profile = {
   email: 'yahairapapin@gmail.com',
   github: 'https://github.com/Yahaira8',
   statusMessage: 'Learning hands-on web design with Mr. Benrud • BJJ & Crochet',
-  avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80',
+  avatarUrl: 'https://i.imgur.com/u3VBDSd.jpeg',
   featuredMediaUrl: 'https://i.imgur.com/jareEOL.jpeg',
   featuredMediaCaption: 'Handmade Crochet Jellyfishes — Custom yarn creations with curly tentacles sculpted with patience and artistry.',
   bio: [
@@ -151,78 +151,72 @@ export const mediaGalleryItems: MediaCardItem[] = [
   {
     id: 'media-2',
     type: 'video',
-    title: 'Brazilian Jiu Jitsu Drill & Technique',
-    mediaUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
-    thumbnailUrl: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80',
-    caption: 'Training on the mats practicing hip escapes, guard retention, and technical transitions to build physical resilience and sharp discipline.',
-    category: 'Jiu Jitsu',
-    tags: ['Athletic', 'BJJ', 'Discipline']
+    title: 'San Francisco Trip 🌉🌁',
+    mediaUrl: 'https://i.imgur.com/fDPC4ZD.mp4',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=800&q=80',
+    caption: 'I went on an amazing trip to San Francisco in May with my friends! We had such a fun time exploring the city, seeing iconic landmarks, and creating unforgettable memories together.',
+    category: 'Travel & Trips',
+    tags: ['San Francisco', 'Friends', 'Travel', 'Trip Memories']
   },
   {
     id: 'media-3',
-    type: 'social',
-    title: 'Crochet Plushie Showcase on Instagram',
-    mediaUrl: 'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=800&q=80',
-    caption: 'Sharing my latest collection of handmade mini animal plushies with the creative crafting community. #CrochetArt #HandmadePlushies',
-    category: 'Social Post',
-    externalUrl: 'https://instagram.com',
-    tags: ['Instagram', 'Community', 'Handmade']
+    type: 'image',
+    title: '8th Grade Graduation 🎓',
+    mediaUrl: 'https://i.imgur.com/cpqBKCF.jpeg',
+    caption: 'I celebrated my 8th grade graduation in June 2026 with my friends, classmates, and family! It was so much fun celebrating together. 🎓✨',
+    category: 'Graduation & Milestones',
+    tags: ['Graduation', '8th Grade', 'Milestones', 'Memories']
   },
   {
     id: 'media-4',
     type: 'image',
-    title: 'Web Design Classroom with Mr. Benrud',
-    mediaUrl: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80',
-    caption: 'Hands-on web design lab drafting wireframes, testing typography scales, and coding accessible HTML & CSS interfaces.',
-    category: 'Web Design',
-    tags: ['High School', 'Coding', 'Web Design']
+    title: 'School Dance Night 🪩✨',
+    mediaUrl: 'https://i.imgur.com/fArK1Nd.jpeg',
+    caption: 'I had such an amazing time attending the middle school dance with my friends! We spent the evening dancing, laughing, taking photos, and making unforgettable middle school memories together.',
+    category: 'School Events',
+    tags: ['School Dance', 'Friends', 'Memories', 'Fun']
   },
   {
     id: 'media-5',
     type: 'image',
-    title: 'San Diego Coastal Inspiration',
-    mediaUrl: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
-    caption: 'Recharging along the Pacific coastline in San Diego, California. The ocean breeze always sparks fresh creativity and calm focus.',
-    category: 'Lifestyle',
-    tags: ['San Diego', 'California', 'Nature']
+    title: 'Nicky Alice Tesseract Display 🧊✨',
+    mediaUrl: 'https://i.imgur.com/faVHj0l.jpeg',
+    caption: "I went and visited artist Nicky Alice's tesseract display! It was so incredible to see in person—he spends so much time, passion, and meticulous detail crafting these mind-bending 4D light sculptures. Click the button below to explore more on his website!",
+    category: 'Art & Inspiration',
+    tags: ['Nicky Alice', 'Tesseract', '4D Art', 'Inspiration'],
+    externalUrl: 'https://www.nickyalice.com/tesseract-sculptures/',
+    externalUrlLabel: 'Visit Nicky Alice Website'
   },
   {
     id: 'media-6',
-    type: 'video',
-    title: 'Crochet Stitching Time-Lapse Demo',
-    mediaUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4',
-    thumbnailUrl: 'https://images.unsplash.com/photo-1607344645866-009c320b5ab8?auto=format&fit=crop&w=800&q=80',
-    caption: 'A quick demonstration capturing the rhythm, tension control, and counting needed for sculpting 3D amigurumi crochet plushies.',
-    category: 'Crochet Craft',
-    tags: ['Video', 'Time-lapse', 'Technique']
+    type: 'image',
+    title: 'Disneyland Trip 🏰✨',
+    mediaUrl: 'https://i.imgur.com/uMs2yPj.png',
+    caption: 'I went on a super fun trip to Disneyland with my brother! We went on so many exciting rides, explored the park together, and had an awesome time making great memories.',
+    category: 'Family & Trips',
+    tags: ['Disneyland', 'Family', 'Brother', 'Theme Park', 'Memories']
   },
   {
     id: 'media-7',
     type: 'social',
-    title: 'GitHub Milestone: About Me Project Release',
-    mediaUrl: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
-    caption: 'Pushed the newest responsive updates to my personal portfolio repository on GitHub! Clean components and custom styling.',
-    category: 'Social Post',
-    externalUrl: 'https://github.com/Yahaira8/About-me-project',
-    tags: ['GitHub', 'OpenSource', 'Portfolio']
+    title: 'Frank Ocean - Creative & Musical Inspiration 🌊🎤',
+    mediaUrl: 'https://i.imgur.com/hXbXMaI.png',
+    caption: "Frank Ocean's soulful storytelling, artistic authenticity, and timeless music are a major source of inspiration for my creative work, from website design to hand-crafted art. Click the button below to view the original Instagram post!",
+    category: 'Inspiration & Music',
+    externalUrl: 'https://www.instagram.com/p/S-t7D/?utm_source=ig_web_copy_link&igsi=NTc4MTIwNjQ2YQ%3D%3D',
+    externalUrlLabel: 'View Post on Instagram',
+    tags: ['Frank Ocean', 'Music', 'Inspiration', 'Creative Vibes']
   },
   {
     id: 'media-8',
     type: 'image',
-    title: 'Healthcare & Clinical Nursing Studies',
-    mediaUrl: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
-    caption: 'Exploring human anatomy, patient vitals, and compassionate healthcare foundations in preparation for my Registered Nurse (RN) degree.',
-    category: 'Healthcare',
-    tags: ['Nursing', 'Healthcare', 'Future RN']
-  },
-  {
-    id: 'media-9',
-    type: 'image',
-    title: 'Custom Color Palette Swatches',
-    mediaUrl: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=800&q=80',
-    caption: 'Experimenting with pastel hues (#f7a6df and #ffdef5) to establish a distinctive, soft, yet vibrant aesthetic across my web projects.',
-    category: 'Design & Craft',
-    tags: ['Design', 'Color Theory', 'Aesthetics']
+    title: 'Parkway Bowl Night 🎳',
+    mediaUrl: 'https://i.imgur.com/VbVksan.jpeg',
+    caption: 'I went to Parkway Bowl in El Cajon with my best friend Ayden and my brother Gabriel! We had an awesome time hanging out, laughing, and playing a few games together.',
+    category: 'Friends & Fun',
+    externalUrl: 'https://parkwaybowl.com/',
+    externalUrlLabel: 'Visit Parkway Bowl Website',
+    tags: ['Bowling', 'Parkway Bowl', 'Friends', 'El Cajon', 'Memories']
   },
   {
     id: 'media-10',

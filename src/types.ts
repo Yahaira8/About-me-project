@@ -22,6 +22,7 @@ export interface MediaCardItem {
   category: string;
   tags?: string[];
   externalUrl?: string;
+  externalUrlLabel?: string;
 }
 
 export interface SkillCategory {

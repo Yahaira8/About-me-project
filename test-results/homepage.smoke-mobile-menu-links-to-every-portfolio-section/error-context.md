@@ -7,7 +7,7 @@
 # Test info
 
 - Name: homepage.smoke.spec.ts >> mobile menu links to every portfolio section
-- Location: tests/homepage.smoke.spec.ts:20:1
+- Location: tests/homepage.smoke.spec.ts:23:1
 
 # Error details
 

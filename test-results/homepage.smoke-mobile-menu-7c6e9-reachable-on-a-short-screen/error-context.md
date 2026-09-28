@@ -7,7 +7,7 @@
 # Test info
 
 - Name: homepage.smoke.spec.ts >> mobile menu options remain reachable on a short screen
-- Location: tests/homepage.smoke.spec.ts:56:1
+- Location: tests/homepage.smoke.spec.ts:59:1
 
 # Error details
 

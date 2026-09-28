@@ -5,14 +5,12 @@ import {
   Target,
   Flame,
   Trophy,
-  Compass,
   Maximize2,
   X,
   Tag,
   Award,
   Sparkles
 } from 'lucide-react';
-import { AmbientHeaderBokeh } from '../components/AmbientHeaderBokeh';
 
 export const ChoiceJiuJitsuPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -64,8 +62,7 @@ export const ChoiceJiuJitsuPage = () => {
   };
 
   return (
-    <div id="jiu-jitsu-page" className="relative pt-28 pb-24 bg-stone-50 min-h-screen overflow-hidden">
-      <AmbientHeaderBokeh variant="hero" />
+    <div id="jiu-jitsu-page" className="relative pt-28 pb-24 bg-transparent min-h-screen">
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
@@ -200,18 +197,32 @@ export const ChoiceJiuJitsuPage = () => {
           </div>
         </div>
 
-        {/* Connection to Nursing & Healthcare */}
-        <div className="neon-card bg-stone-900 p-6 sm:p-8 rounded-2xl text-stone-100 flex flex-col md:flex-row items-center gap-6">
-          <div className="w-12 h-12 rounded-xl bg-[#f7a6df] text-stone-950 flex items-center justify-center flex-shrink-0">
-            <Compass className="w-6 h-6" />
+        {/* Martial Arts Spotlight */}
+        <div className="neon-card bg-stone-900 p-6 sm:p-8 rounded-2xl text-stone-100 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border border-[#f7a6df]/30">
+          <div className="flex items-start gap-4 sm:gap-6">
+            <div className="w-12 h-12 rounded-xl bg-[#f7a6df] text-stone-950 flex items-center justify-center flex-shrink-0 mt-1 sm:mt-0">
+              <Shield className="w-6 h-6" />
+            </div>
+            <div className="space-y-1.5 max-w-2xl">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#ffdef5]/20 text-[#f7a6df] text-[11px] font-bold uppercase tracking-wider">
+                <Sparkles className="w-3 h-3 text-[#f7a6df]" />
+                <span>Martial Arts Spotlight</span>
+              </div>
+              <h4 className="text-xl font-bold text-white">
+                Brazilian Jiu Jitsu
+              </h4>
+              <p className="text-xs sm:text-sm text-stone-300 leading-relaxed">
+                Training Jiu Jitsu has taught me mental discipline, tactical problem-solving under pressure, and physical strength that I apply to school and daily life.
+              </p>
+            </div>
           </div>
-          <div className="space-y-1">
-            <h4 className="text-base font-bold text-white">
-              The Bridge Between Martial Arts and Registered Nursing
-            </h4>
-            <p className="text-xs sm:text-sm text-stone-300 leading-relaxed">
-              Healthcare professionals often encounter unpredictable, high-pressure emergencies. My BJJ practice trains my nervous system to de-escalate anxiety, stay observant, and act decisively with clarity and compassion.
-            </p>
+
+          <div className="flex-shrink-0 self-stretch md:self-center flex md:flex-col items-center justify-between md:justify-center p-3.5 sm:p-4 rounded-xl bg-stone-800/80 border border-stone-700/60 min-w-[190px] text-center gap-1">
+            <span className="text-[11px] uppercase tracking-wider font-semibold text-stone-400">Belt Rank</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-amber-500/20 via-white/10 to-amber-500/20 border border-amber-400/40 text-amber-200 font-bold text-sm sm:text-base">
+              <Award className="w-4 h-4 text-amber-400" />
+              <span>Orange & White Belt</span>
+            </div>
           </div>
         </div>
       </div>

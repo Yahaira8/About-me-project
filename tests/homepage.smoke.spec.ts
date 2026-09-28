@@ -12,9 +12,12 @@ test('home page renders hero content and usable primary navigation', async ({ pa
     await expect(navigationLink).toBeVisible();
   }
 
-  for (const section of ['about', 'skills', 'projects', 'trivia', 'contact']) {
+  for (const section of ['about', 'trivia', 'contact']) {
     await expect(page.locator(`#${section}`)).toBeAttached();
   }
+
+  await expect(page.locator('#skills')).toHaveCount(0);
+  await expect(page.locator('#projects')).toHaveCount(0);
 });
 
 test('mobile menu links to every portfolio section', async ({ page }) => {
@@ -24,7 +27,7 @@ test('mobile menu links to every portfolio section', async ({ page }) => {
   await page.locator('#mobile-menu-toggle-btn').click();
   await expect(page.locator('#mobile-navigation-dropdown')).toBeVisible();
 
-  for (const section of ['about', 'skills', 'projects', 'trivia', 'contact']) {
+  for (const section of ['about', 'trivia', 'contact']) {
     const sectionLink = page.locator(`#mobile-section-link-${section}`);
 
     await expect(sectionLink).toBeVisible();
@@ -62,7 +65,7 @@ test('mobile menu options remain reachable on a short screen', async ({ page }) 
   await expect(dropdown).toBeVisible();
 
   const options = [
-    ...['about', 'skills', 'projects', 'trivia', 'contact'].map((section) =>
+    ...['about', 'trivia', 'contact'].map((section) =>
       page.locator(`#mobile-section-link-${section}`),
     ),
     ...['home', 'media', 'future', 'jiu-jitsu', 'crochet', 'admin'].map((pageName) =>
@@ -91,53 +94,6 @@ test('mobile menu options remain reachable on a short screen', async ({ page }) 
 
     expect(fitsInDropdownAndViewport).toBe(true);
   }
-});
-
-test('project details modal opens and closes', async ({ page }) => {
-  await page.goto('/');
-
-  const projectCard = page.locator('#project-card-photos-gallery');
-  const projectTitle = await projectCard.locator('h3').textContent();
-  await projectCard.getByRole('button', { name: 'View Details' }).click();
-
-  const modal = page.locator('#project-detail-modal-overlay');
-  await expect(modal).toBeVisible();
-  await expect(modal.locator('h3')).toHaveText(projectTitle?.trim() ?? '');
-
-  await modal.getByRole('button', { name: 'Close modal' }).click();
-  await expect(modal).toBeHidden();
-});
-
-test('project details modal supports keyboard users and restores focus', async ({ page }) => {
-  await page.goto('/');
-
-  const projectCard = page.locator('#project-card-photos-gallery');
-  const trigger = projectCard.getByRole('button', { name: 'View Details' });
-  const projectTitle = (await projectCard.locator('h3').textContent())?.trim() ?? '';
-  await trigger.focus();
-  await page.keyboard.press('Enter');
-
-  const dialog = page.getByRole('dialog', { name: projectTitle });
-  const dialogTitle = dialog.getByRole('heading', { name: projectTitle });
-  await expect(dialog).toBeVisible();
-  await expect(dialog).toHaveAttribute('aria-modal', 'true');
-  await expect(dialogTitle).toBeFocused();
-
-  const closeButton = dialog.getByRole('button', { name: 'Close', exact: true });
-  const closeIconButton = dialog.getByRole('button', { name: 'Close modal' });
-  const repositoryLink = dialog.getByRole('link', { name: 'Open GitHub Repo' });
-  await page.keyboard.press('Tab');
-  await expect(closeButton).toBeFocused();
-  await page.keyboard.press('Tab');
-  await expect(repositoryLink).toBeFocused();
-  await page.keyboard.press('Tab');
-  await expect(closeIconButton).toBeFocused();
-  await page.keyboard.press('Shift+Tab');
-  await expect(repositoryLink).toBeFocused();
-
-  await page.keyboard.press('Escape');
-  await expect(dialog).toBeHidden();
-  await expect(trigger).toBeFocused();
 });
 
 test('trivia shows the final score and resets when played again', async ({ page }) => {

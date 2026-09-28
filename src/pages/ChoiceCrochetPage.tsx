@@ -12,15 +12,13 @@ import {
   Layers,
   Filter,
   CheckCircle2,
-  Clock3
 } from 'lucide-react';
-import { AmbientHeaderBokeh } from '../components/AmbientHeaderBokeh';
 
 interface CrochetProject {
   id: string;
   title: string;
-  category: 'Amigurumi' | 'Sea Life' | 'Keychains' | 'In Progress';
-  status: 'Completed' | 'In Progress';
+  category: 'Amigurumi' | 'Sea Life';
+  status: 'Completed';
   time: string;
   yarn: string;
   technique: string;
@@ -62,51 +60,65 @@ export const ChoiceCrochetPage = () => {
       tags: ['SeaLife', 'Tentacles', 'Amigurumi', 'HandmadeWithLove']
     },
     {
-      id: 'crochet-turtle',
-      title: 'Baby Sea Turtle Amigurumi',
+      id: 'crochet-strawberry-cow',
+      title: 'Plush Strawberry Cow & Berry Bag',
+      category: 'Amigurumi',
+      status: 'Completed',
+      time: '7.0 Hours',
+      yarn: 'Super Bulky Chenille Velvet Yarn (Cream, Baby Pink & Mint)',
+      technique: 'Single crochet amigurumi in the round with fruit horn motifs & berry strap',
+      defaultImage: 'https://i.imgur.com/VgxLWfT.jpeg',
+      isPlaceholder: false,
+      description: 'An adorable strawberry cow crafted from ultra-soft white and baby pink chenille yarn, complete with twin strawberry horns with leafy caps, pink-tipped hooves, and a matching strawberry crossbody pouch.',
+      story: 'Crafted with a whimsical cottagecore garden aesthetic! Working with super plush chenille yarn gave this cow the squishiest huggable texture, and making the miniature matching strawberry bag was pure joy.',
+      tags: ['StrawberryCow', 'Amigurumi', 'ChenilleYarn', 'Plushie', 'Cottagecore']
+    },
+    {
+      id: 'crochet-toothy-bees',
+      title: 'Trio of Toothy Velvet Bumble Bees',
+      category: 'Amigurumi',
+      status: 'Completed',
+      time: '5.5 Hours',
+      yarn: 'Super Bulky Polyester Chenille Yarn in Honey Yellow & Jet Black',
+      technique: 'Continuous spiral amigurumi with zigzag colorwork toothy grin',
+      defaultImage: 'https://i.imgur.com/ORCaAH2.jpeg',
+      isPlaceholder: false,
+      description: 'A trio of round, squishy bumble bees crocheted from ultra-soft yellow and black velvet yarn, featuring glossy safety eyes, antennae nubs, and a distinct jagged toothy grin pattern across their bellies.',
+      story: 'A cheeky, mischievous twist on the classic plush bumble bee! Instead of plain stripes, the alternating zigzag grin gives each bee a fierce yet utterly cuddly personality.',
+      tags: ['ToothyBees', 'BumbleBee', 'ChenilleYarn', 'PlushSquad', 'Amigurumi']
+    },
+    {
+      id: 'crochet-sunburst-turtle',
+      title: 'Sunburst Velvet Sea Turtle',
       category: 'Sea Life',
       status: 'Completed',
-      time: '4.5 Hours',
-      yarn: 'Mint & Sage Green Cotton Blend',
-      technique: 'Hexagonal dome shell with seamless flipper attachments',
-      defaultImage: 'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=800&q=80',
-      isPlaceholder: true,
-      description: 'Sculpted shell using spiral rounds with textured swimming flippers and hand-embroidered facial accents.',
-      story: 'Designed with calming ocean tones. The textured back shell is shaped through increases and invisible decreases to create a gently curved profile.',
-      tags: ['SeaTurtle', 'OceanVibes', 'CottonYarn', 'Amigurumi']
+      time: '5.0 Hours',
+      yarn: 'Super Bulky Chenille Yarn in Sandy Tan, Chocolate Brown & Sunshine Yellow',
+      technique: 'Domed shell with ruffled sunshine yellow border, flippers & cheek blush',
+      defaultImage: 'https://i.imgur.com/j78DjFS.jpeg',
+      isPlaceholder: false,
+      description: 'A velvety sea turtle with a warm tan body, rich chocolate shell, and a vibrant ruffled sunshine yellow shell border, finished with deep black safety eyes and sweet embroidered blush.',
+      story: 'Inspired by warm sunlight glinting across ocean reefs. The ruffled yellow shell edge gives this peaceful ocean buddy a joyful burst of color and delightful tactile detail.',
+      tags: ['SeaTurtle', 'SeaLife', 'SunburstBorder', 'ChenilleYarn', 'Plushie']
     },
     {
-      id: 'crochet-bunny',
-      title: 'Pastel Bunny with Floppy Ears',
-      category: 'Amigurumi',
-      status: 'Completed',
-      time: '6.0 Hours',
-      yarn: 'Baby Pink Chenille Velvet Yarn',
-      technique: 'Fluffy chenille single crochet with lavender ear linings',
-      defaultImage: 'https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=800&q=80',
-      isPlaceholder: true,
-      description: 'Ultra-soft plushie crafted with safety eyes, a fluffy pompom tail, and long poseable floppy ears.',
-      story: 'Chenille yarn is famously tricky to maintain tension with, but the resulting cloud-like softness is unmatched. A cozy companion piece for study breaks.',
-      tags: ['Bunny', 'ChenilleYarn', 'PastelAesthetic', 'SoftToys']
-    },
-    {
-      id: 'crochet-cat',
-      title: 'Mini Calico Cat & Kitten',
-      category: 'Amigurumi',
+      id: 'crochet-strawberry-turtle',
+      title: 'Pink Strawberry Sea Turtle',
+      category: 'Sea Life',
       status: 'Completed',
       time: '5.0 Hours',
-      yarn: 'Tri-Color Cream, Peach & Charcoal Yarn',
-      technique: 'Intarsia color-blocking and curved tail armature',
-      defaultImage: 'https://images.unsplash.com/photo-1607453998774-d533f65adc99?auto=format&fit=crop&w=800&q=80',
-      isPlaceholder: true,
-      description: 'Patchwork color-blocking technique creating distinctive markings, pointed kitten ears, and a resting posture.',
-      story: 'Features seamless color changes mid-round so the calico spots appear organic and lively across the body and forehead.',
-      tags: ['CalicoCat', 'KittenPlushie', 'ColorWork', 'Amigurumi']
+      yarn: 'Plush Chenille Velvet Yarn in Pastel Pink, Hot Berry Pink, Leaf Green & White',
+      technique: 'Sculpted strawberry shell with embroidered white seeds & green calyx stem crown',
+      defaultImage: 'https://i.imgur.com/aCx5MBb.jpeg',
+      isPlaceholder: false,
+      description: 'A delightful pastel pink sea turtle with a vibrant berry-pink shell crafted to look like a plump ripe strawberry, featuring embroidered white seed flecks, a leafy green stem crown, and cheek blush.',
+      story: 'A sweet fusion of sea life and fruit sweetness! The contrast between the pastel pink body and the bright strawberry shell makes this plushie an instant favorite.',
+      tags: ['StrawberryTurtle', 'SeaLife', 'BerryShell', 'VelvetPlush', 'Kawaii']
     },
     {
       id: 'crochet-frog-keychain',
       title: 'Strawberry Froggy Pocket Pal',
-      category: 'Keychains',
+      category: 'Amigurumi',
       status: 'Completed',
       time: '3.0 Hours',
       yarn: 'Sage Green & Strawberry Red Cotton Yarn',
@@ -115,21 +127,7 @@ export const ChoiceCrochetPage = () => {
       isPlaceholder: true,
       description: 'Miniature palm-sized frog wearing a sculpted strawberry beret with yellow seed stitches and silver key ring.',
       story: 'A cheerful everyday accessory designed to clip onto backpacks and tote bags. Quick to make and a great scrap-yarn project!',
-      tags: ['Keychain', 'Froggy', 'StrawberryBeret', 'PocketPal']
-    },
-    {
-      id: 'crochet-whale-shark',
-      title: 'Whale Shark Cuddle Cushion',
-      category: 'In Progress',
-      status: 'In Progress',
-      time: '8+ Hours (Est.)',
-      yarn: 'Denim Heather Chunky Blanket Yarn',
-      technique: 'Wide-mouth continuous body with French knot dorsal spots',
-      defaultImage: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80',
-      isPlaceholder: true,
-      description: 'Large aquatic gentle giant currently in progress with wide pectoral fins and embroidered starry spots.',
-      story: 'Currently on my crafting hook! Crafting a full body pillow size requires multiple skeins of blanket yarn and precise increase pacing.',
-      tags: ['InTheWorks', 'WhaleShark', 'ChunkyYarn', 'PillowPlush']
+      tags: ['Amigurumi', 'Froggy', 'StrawberryBeret', 'PocketPal']
     }
   ];
 
@@ -148,7 +146,7 @@ export const ChoiceCrochetPage = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  const categories = ['All', 'Sea Life', 'Amigurumi', 'Keychains', 'In Progress'];
+  const categories = ['All', 'Sea Life', 'Amigurumi'];
 
   const filteredProjects = initialProjects.filter((item) => {
     if (activeCategory === 'All') return true;
@@ -160,8 +158,7 @@ export const ChoiceCrochetPage = () => {
   };
 
   return (
-    <div id="crochet-page" className="relative pt-28 pb-24 bg-stone-50 min-h-screen overflow-hidden">
-      <AmbientHeaderBokeh variant="hero" />
+    <div id="crochet-page" className="relative pt-28 pb-24 bg-transparent min-h-screen">
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-10">
@@ -176,12 +173,12 @@ export const ChoiceCrochetPage = () => {
             <span className="neon-flowing-glow">Handmade Crochet Creations</span>
           </h1>
           <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
-            A dedicated project gallery documenting yarn creations, custom amigurumi plushies, work-in-progress pieces, and creative design notes.
+            A dedicated project gallery documenting yarn creations, custom amigurumi plushies, and creative design notes.
           </p>
         </div>
 
         {/* Gallery Overview & Highlights Strip */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-10">
           <div className="neon-card bg-white p-4 rounded-xl text-center">
             <p className="text-2xl font-bold font-serif text-[#831859]">{initialProjects.length}+</p>
             <p className="text-xs text-stone-500 font-medium">Documented Projects</p>
@@ -193,10 +190,6 @@ export const ChoiceCrochetPage = () => {
           <div className="neon-card bg-white p-4 rounded-xl text-center">
             <p className="text-2xl font-bold font-serif text-[#831859]">Magic Ring</p>
             <p className="text-xs text-stone-500 font-medium">Favorite Technique</p>
-          </div>
-          <div className="neon-card bg-white p-4 rounded-xl text-center">
-            <p className="text-2xl font-bold font-serif text-[#831859]">Pediatrics</p>
-            <p className="text-xs text-stone-500 font-medium">Gifting Aspiration</p>
           </div>
         </div>
 
@@ -283,17 +276,10 @@ export const ChoiceCrochetPage = () => {
 
                     {/* Status Pill */}
                     <div className="absolute bottom-3 left-3">
-                      {project.status === 'Completed' ? (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white/90 text-emerald-800 shadow-xs backdrop-blur-xs">
-                          <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-                          <span>Finished Piece</span>
-                        </span>
-                      ) : (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white/90 text-amber-800 shadow-xs backdrop-blur-xs">
-                          <Clock3 className="w-3 h-3 text-amber-600 animate-spin" />
-                          <span>In Progress</span>
-                        </span>
-                      )}
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white/90 text-emerald-800 shadow-xs backdrop-blur-xs">
+                        <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                        <span>Finished Piece</span>
+                      </span>
                     </div>
                   </div>
 
@@ -332,7 +318,7 @@ export const ChoiceCrochetPage = () => {
                 {/* Card Action Footer */}
                 <div className="p-4 bg-stone-50 border-t border-stone-100 flex items-center justify-between">
                   <span className="text-xs text-stone-500 font-medium">
-                    {project.status === 'Completed' ? 'Completed Piece' : 'In Progress'}
+                    Finished Piece
                   </span>
 
                   <button
