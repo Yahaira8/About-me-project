@@ -26,11 +26,7 @@ export const CustomHeartCursor: React.FC = () => {
   const [particles, setParticles] = useState<Particle[]>([]);
   const [ripples, setRipples] = useState<Ripple[]>([]);
 
-  // Positions for smooth fluid lag / lerp
-  const mousePos = useRef({ x: -100, y: -100 });
-  const currentPos = useRef({ x: -100, y: -100 });
-  const animFrameId = useRef<number | null>(null);
-
+  // Instant 1:1 real mouse position tracking with 0 lag
   useEffect(() => {
     // Only enable custom cursor if fine pointer (desktop mouse, not touch screen)
     if (window.matchMedia('(pointer: coarse)').matches) {
@@ -38,8 +34,11 @@ export const CustomHeartCursor: React.FC = () => {
     }
 
     const handleMouseMove = (e: MouseEvent) => {
-      mousePos.current = { x: e.clientX, y: e.clientY };
-      if (!isVisible) setIsVisible(true);
+      // Instantaneous 1:1 hardware-accurate positioning
+      if (cursorRef.current) {
+        cursorRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+      }
+      setIsVisible(true);
 
       // Check if hovering over clickable elements
       const target = e.target as HTMLElement | null;
@@ -63,7 +62,7 @@ export const CustomHeartCursor: React.FC = () => {
         setRipples((prev) => prev.filter((r) => r.id !== rippleId));
       }, 600);
 
-      // Trigger burst of 6-8 sparkling mini hearts
+      // Trigger burst of sparkling mini hearts
       const count = 7;
       const newParticles: Particle[] = [];
       const colors = ['#ff2a8d', '#f72585', '#ff70a6', '#ffdef5', '#ffffff'];
@@ -99,41 +98,11 @@ export const CustomHeartCursor: React.FC = () => {
       setIsVisible(true);
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mouseup', handleMouseUp);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    window.addEventListener('mousedown', handleMouseDown, { passive: true });
+    window.addEventListener('mouseup', handleMouseUp, { passive: true });
     document.addEventListener('mouseleave', handleMouseLeave);
     document.addEventListener('mouseenter', handleMouseEnter);
-
-    // Fluid easing animation loop (linear interpolation / lerp)
-    const renderLoop = () => {
-      const ease = 0.22; // fluid glide factor
-      currentPos.current.x += (mousePos.current.x - currentPos.current.x) * ease;
-      currentPos.current.y += (mousePos.current.y - currentPos.current.y) * ease;
-
-      if (cursorRef.current) {
-        cursorRef.current.style.transform = `translate3d(${currentPos.current.x}px, ${currentPos.current.y}px, 0)`;
-      }
-
-      // Animate particles
-      setParticles((prev) => {
-        if (prev.length === 0) return prev;
-        return prev
-          .map((p) => ({
-            ...p,
-            x: p.x + p.vx,
-            y: p.y + p.vy,
-            vy: p.vy + 0.08, // subtle gravity
-            opacity: p.opacity - 0.035, // fade out
-            size: Math.max(0, p.size - 0.15),
-          }))
-          .filter((p) => p.opacity > 0 && p.size > 0);
-      });
-
-      animFrameId.current = requestAnimationFrame(renderLoop);
-    };
-
-    animFrameId.current = requestAnimationFrame(renderLoop);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
@@ -141,16 +110,41 @@ export const CustomHeartCursor: React.FC = () => {
       window.removeEventListener('mouseup', handleMouseUp);
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseenter', handleMouseEnter);
-      if (animFrameId.current) {
-        cancelAnimationFrame(animFrameId.current);
-      }
     };
-  }, [isVisible]);
+  }, []);
 
-  if (!isVisible) return null;
+  // Dedicated lightweight loop for click burst particles only
+  useEffect(() => {
+    if (particles.length === 0) return;
+    let animId: number;
+
+    const animateParticles = () => {
+      setParticles((prev) => {
+        if (prev.length === 0) return prev;
+        return prev
+          .map((p) => ({
+            ...p,
+            x: p.x + p.vx,
+            y: p.y + p.vy,
+            vy: p.vy + 0.1,
+            opacity: p.opacity - 0.04,
+            size: Math.max(0, p.size - 0.15),
+          }))
+          .filter((p) => p.opacity > 0 && p.size > 0);
+      });
+      animId = requestAnimationFrame(animateParticles);
+    };
+
+    animId = requestAnimationFrame(animateParticles);
+    return () => cancelAnimationFrame(animId);
+  }, [particles.length]);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden">
+    <div
+      className={`fixed inset-0 pointer-events-none z-[9999] overflow-hidden transition-opacity duration-150 ${
+        isVisible ? 'opacity-100' : 'opacity-0'
+      }`}
+    >
       {/* Ripple Rings on Click */}
       {ripples.map((ripple) => (
         <div
