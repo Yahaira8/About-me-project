@@ -1,0 +1,1 @@
+- [Preview-origin asset checks](preview-origin-assets.md) — External images may fail in localhost screenshots but load through the Replit preview domain; compare origins before calling them broken.
