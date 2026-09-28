@@ -160,10 +160,12 @@ test('trivia shows the final score and resets when played again', async ({ page 
   await expect(trivia.getByText('Current Score: 0')).toBeVisible();
 });
 
-test('valid contact message confirms without reloading the page', async ({ page }) => {
-  await page.route('**/api/contact', (route) =>
-    route.fulfill({ status: 200, contentType: 'application/json', body: '{}' }),
-  );
+test('valid contact message is saved locally when sending service is unavailable', async ({ page }) => {
+  let contactRequests = 0;
+  await page.route('**/api/contact', (route) => {
+    contactRequests += 1;
+    return route.abort('failed');
+  });
   await page.goto('/');
 
   const initialTimeOrigin = await page.evaluate(() => performance.timeOrigin);
@@ -173,10 +175,24 @@ test('valid contact message confirms without reloading the page', async ({ page 
   });
 
   await page.locator('#sender-name-input').fill('Test Visitor');
+  await page.locator('#sender-email-input').fill('visitor@example.com');
   await page.locator('#sender-message-input').fill('Hello from the browser test.');
   await page.locator('#contact-form-submit-btn').click();
 
   await expect(page.getByRole('heading', { name: 'Thank you for reaching out!' })).toBeVisible();
+  expect(contactRequests).toBe(1);
   expect(await page.evaluate(() => performance.timeOrigin)).toBe(initialTimeOrigin);
   expect(loadEvents).toBe(0);
+
+  const storedMessages = await page.evaluate(() =>
+    JSON.parse(localStorage.getItem('contact_messages') ?? '[]'),
+  );
+  expect(storedMessages).toHaveLength(1);
+  expect(storedMessages[0]).toMatchObject({
+    name: 'Test Visitor',
+    email: 'visitor@example.com',
+    message: 'Hello from the browser test.',
+    status: 'new',
+    replied: false,
+  });
 });
