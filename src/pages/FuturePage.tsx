@@ -1,66 +1,66 @@
-import { HeartPulse, GraduationCap, Building2, Stethoscope, Compass, Calendar, Award, Sparkles, Heart, ExternalLink } from 'lucide-react';
+import { HeartPulse, GraduationCap, Building2, Stethoscope, Compass, Calendar, Sparkles, Heart, ExternalLink } from 'lucide-react';
 import { profileData } from '../data';
 
 export const FuturePage = () => {
   const fiveYearPlan = [
     {
-      year: 'Year 1 (2025 - 2026)',
-      phase: 'High School Foundation & Web Design Mastery',
+      year: 'Year 1 (2026 - 2027)',
+      phase: 'Freshman Year: Build Strong Foundations',
       icon: GraduationCap,
       description:
-        'Complete freshman and sophomore high school courses with high honors while advancing digital web design skills with Mr. Benrud and training regularly in Brazilian Jiu Jitsu to cultivate physical and mental resilience.',
+        'Start high school by building steady study habits, exploring new subjects, and continuing to learn web design with Mr. Benrud alongside regular Brazilian Jiu Jitsu training.',
       milestones: [
-        'Master responsive web development & accessible semantic UI',
-        'Maintain a 3.8+ GPA across core STEM and health sciences',
-        'Consistently train on the mats in Brazilian Jiu Jitsu'
+        'Set consistent routines for high school coursework',
+        'Keep developing web design and accessible UI skills',
+        'Continue Brazilian Jiu Jitsu training and creative hobbies'
       ]
     },
     {
-      year: 'Year 2 (2026 - 2027)',
-      phase: 'Healthcare Volunteer & Shadowing Experience',
+      year: 'Year 2 (2027 - 2028)',
+      phase: 'Sophomore Year: Explore Healthcare',
       icon: HeartPulse,
       description:
-        'Begin volunteering at local San Diego clinics or pediatric centers. Gain direct exposure to inpatient and outpatient workflows while taking AP Biology and Anatomy & Physiology.',
+        'Continue building a strong academic foundation and learn more about healthcare careers through age-appropriate school and community opportunities as they become available.',
       milestones: [
-        'Complete 100+ hours of community healthcare volunteering',
-        'Earn basic First Aid, CPR, and AED certifications',
-        'Create a patient care support website for young hospital visitors'
+        'Explore science and health-related classes and activities',
+        'Look into suitable community service opportunities',
+        'Keep a record of interests, questions, and skills to develop'
       ]
     },
     {
-      year: 'Year 3 (2027 - 2028)',
-      phase: 'High School Graduation & Nursing School Admission',
+      year: 'Year 3 (2028 - 2029)',
+      phase: 'Junior Year: Prepare for College',
       icon: Building2,
       description:
-        'Graduate high school with academic honors and enter an accredited Bachelor of Science in Nursing (BSN) collegiate program in California.',
+        'Focus on junior-year coursework, begin researching college options and BSN program pathways, and learn about application timelines and admission requirements.',
       milestones: [
-        'Graduate in the top tier of high school class',
-        'Enroll in University BSN / Pre-Nursing program',
-        'Join the Student Nurses Association'
+        'Meet with school counselors to discuss college planning',
+        'Research BSN and pre-nursing programs and their requirements',
+        'Continue exploring healthcare through appropriate activities'
       ]
     },
     {
-      year: 'Year 4 (2028 - 2029)',
-      phase: 'Clinical Rotations & Hands-On Patient Care',
+      year: 'Year 4 (2029 - 2030)',
+      phase: 'Senior Year: Graduate from High School',
+      icon: GraduationCap,
+      description:
+        'Complete senior-year requirements and graduate from high school around 2030. Apply to colleges and BSN pathways that fit academic goals and circumstances.',
+      milestones: [
+        'Complete high school graduation requirements',
+        'Submit college applications and compare available options',
+        'Plan a thoughtful transition to post-secondary study'
+      ]
+    },
+    {
+      year: 'Year 5 (2030 - 2031)',
+      phase: 'Begin College and Work Toward a BSN',
       icon: Stethoscope,
       description:
-        'Engage in intensive hospital clinical rotations across pediatric, med-surg, and emergency departments, mastering bedside patient care and clinical teamwork.',
+        'Start college studies after high school and work toward a Bachelor of Science in Nursing (BSN), following the selected program’s coursework and prerequisites. Completing the BSN, taking the NCLEX-RN, and earning RN licensure are longer-term goals beyond this five-year plan.',
       milestones: [
-        'Complete clinical hospital rotations with stellar evaluations',
-        'Master pharmacology, health assessment, and IV insertion',
-        'Gift handmade crochet cheer plushies to pediatric patients'
-      ]
-    },
-    {
-      year: 'Year 5 (2029 - 2030)',
-      phase: 'NCLEX-RN Exam & Registered Nurse (RN) Licensure',
-      icon: Award,
-      description:
-        'Pass the NCLEX-RN national examination on the first attempt and begin working as a dedicated Registered Nurse at a renowned regional medical center.',
-      milestones: [
-        'Attain California Registered Nurse (RN) Board Licensure',
-        'Accept residency position in a Pediatric or Critical Care Unit',
-        'Provide daily compassionate, empathetic, life-saving care'
+        'Begin post-secondary study in a chosen college pathway',
+        'Work through foundational coursework and program requirements',
+        'Continue learning about compassionate, family-centered care'
       ]
     }
   ];
@@ -78,10 +78,10 @@ export const FuturePage = () => {
             id="future-page-heading"
             className="text-3xl sm:text-5xl font-serif font-bold text-stone-900 tracking-tight mb-4"
           >
-            <span className="neon-flowing-glow">A 5-Year Vision into Healthcare</span>
+            <span className="neon-flowing-glow">A 5-Year Vision Toward Healthcare</span>
           </h1>
           <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
-            From high school web design and mat discipline to becoming a compassionate Registered Nurse (RN) dedicated to uplifting patient lives.
+            A realistic path from starting high school in 2026 to beginning college study after graduation, with nursing as a longer-term aspiration.
           </p>
         </div>
 
@@ -101,13 +101,13 @@ export const FuturePage = () => {
             <div className="flex-1 space-y-3">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 border border-[#f7a6df] text-[#831859] text-xs font-bold uppercase tracking-wider shadow-xs">
                 <Sparkles className="w-3.5 h-3.5 text-[#f7a6df]" />
-                <span>Ultimate Accomplishable Goal</span>
+                <span>Long-Term Career Goal</span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-serif font-bold text-stone-900 leading-tight">
                 Work as a Registered Nurse at Rady Children's Hospital
               </h2>
               <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">
-                My primary career target is to graduate with my Bachelor of Science in Nursing (BSN), pass the NCLEX-RN exam, and secure a full-time position as a Pediatric Registered Nurse at Rady Children's Hospital in San Diego. I am passionate about providing loving, high-quality pediatric care and supporting children and families during their most critical care moments.
+                My long-term career aspiration is to complete a Bachelor of Science in Nursing (BSN), meet the requirements for RN licensure, and pursue pediatric nursing at Rady Children's Hospital in San Diego. These steps come after high school and college study, beyond this five-year roadmap.
               </p>
             </div>
           </div>

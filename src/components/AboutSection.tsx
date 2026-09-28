@@ -53,6 +53,17 @@ export const AboutSection = () => {
                 </p>
               </div>
             </div>
+
+            <div className="neon-card overflow-hidden rounded-xl bg-white shadow-2xs">
+              <img
+                src="/yahaira_crochet_jellyfishes.jpg"
+                alt="Two handmade crochet jellyfish plushies in pink and blue"
+                className="w-full max-h-72 object-cover object-center"
+              />
+              <p className="px-4 py-3 text-xs text-stone-600 leading-relaxed">
+                Handmade crochet jellyfish plushies—a colorful example of the creativity and care I bring to my crafts.
+              </p>
+            </div>
           </div>
 
           {/* Timeline / Highlights Sidebar */}

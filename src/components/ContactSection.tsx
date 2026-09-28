@@ -1,14 +1,16 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Mail, GitBranch, MapPin, Copy, Check, Send, CheckCircle2 } from 'lucide-react';
 import { profileData } from '../data';
 
 export const ContactSection = () => {
   const [copied, setCopied] = useState(false);
-  const [name, setName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  const [reason, setReason] = useState('General Greeting / Say Hello');
+  const [reason, setReason] = useState('');
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const submissionInProgress = useRef(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -20,56 +22,61 @@ export const ContactSection = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submissionInProgress.current) return;
     setErrorMessage('');
 
-    if (!name.trim() || !message.trim()) {
-      setErrorMessage('Please fill in your name and message.');
+    if (
+      !firstName.trim() ||
+      !lastName.trim() ||
+      !email.trim() ||
+      !reason ||
+      !message.trim()
+    ) {
+      setErrorMessage('Please complete all required fields.');
       return;
     }
 
+    submissionInProgress.current = true;
     setIsSubmitting(true);
-    const newRecord = {
-      id: `msg-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
-      name: name.trim(),
-      email: email.trim() || 'Anonymous',
-      reason,
-      message: message.trim(),
-      timestamp: new Date().toISOString(),
-      status: 'new',
-      replied: false,
-      repliedAt: null,
-    };
-
     try {
-      // 1. Attempt POST to server-side endpoint
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newRecord),
+        body: JSON.stringify({
+          firstName: firstName.trim(),
+          lastName: lastName.trim(),
+          email: email.trim(),
+          reason,
+          message: message.trim(),
+        }),
       });
 
-      if (!response.ok) {
-        console.warn('Server contact API returned status:', response.status);
+      if (response.status < 200 || response.status >= 300) {
+        let apiError = '';
+        try {
+          const responseBody = await response.json();
+          if (typeof responseBody?.error === 'string') {
+            apiError = responseBody.error;
+          }
+        } catch {
+          // Use the generic message when the response is not JSON.
+        }
+        setErrorMessage(apiError || 'Unable to send your message. Please try again.');
+        return;
       }
-    } catch (err) {
-      console.warn('Notice: Server API endpoint not reachable in static mode, recorded locally.', err);
-    }
 
-    // 2. Always persist to localStorage for instant client fallback and Admin testing
-    try {
-      const existing = JSON.parse(localStorage.getItem('contact_messages') || '[]');
-      existing.unshift(newRecord);
-      localStorage.setItem('contact_messages', JSON.stringify(existing));
+      setSubmitted(true);
+      setFirstName('');
+      setLastName('');
+      setEmail('');
+      setReason('');
+      setMessage('');
     } catch {
-      // ignore storage limitations
+      setErrorMessage('Unable to send your message. Please check your connection and try again.');
+    } finally {
+      submissionInProgress.current = false;
+      setIsSubmitting(false);
     }
-
-    setIsSubmitting(false);
-    setSubmitted(true);
-    setName('');
-    setEmail('');
-    setReason('General Greeting / Say Hello');
-    setMessage('');
   };
 
   return (
@@ -213,18 +220,36 @@ export const ContactSection = () => {
                 <form id="contact-message-form" onSubmit={handleSubmit} className="space-y-4">
                   <div>
                     <label
-                      htmlFor="sender-name-input"
+                      htmlFor="sender-first-name-input"
                       className="block text-xs font-semibold text-stone-700 mb-1.5"
                     >
-                      Your Name <span className="text-rose-500">*</span>
+                      First Name <span className="text-rose-500">*</span>
                     </label>
                     <input
-                      id="sender-name-input"
+                      id="sender-first-name-input"
                       type="text"
                       required
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      placeholder="Jane Doe"
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
+                      placeholder="Jane"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-xs sm:text-sm text-stone-900 focus:outline-none focus:ring-2 focus:ring-[#f7a6df]/50 focus:border-[#f7a6df]"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="sender-last-name-input"
+                      className="block text-xs font-semibold text-stone-700 mb-1.5"
+                    >
+                      Last Name <span className="text-rose-500">*</span>
+                    </label>
+                    <input
+                      id="sender-last-name-input"
+                      type="text"
+                      required
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
+                      placeholder="Doe"
                       className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-xs sm:text-sm text-stone-900 focus:outline-none focus:ring-2 focus:ring-[#f7a6df]/50 focus:border-[#f7a6df]"
                     />
                   </div>
@@ -234,11 +259,12 @@ export const ContactSection = () => {
                       htmlFor="sender-email-input"
                       className="block text-xs font-semibold text-stone-700 mb-1.5"
                     >
-                      Your Email (optional)
+                      Your Email <span className="text-rose-500">*</span>
                     </label>
                     <input
                       id="sender-email-input"
                       type="email"
+                      required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="jane@example.com"
@@ -255,14 +281,16 @@ export const ContactSection = () => {
                     </label>
                     <select
                       id="sender-reason-select"
+                      required
                       value={reason}
                       onChange={(e) => setReason(e.target.value)}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-xs sm:text-sm text-stone-900 bg-white focus:outline-none focus:ring-2 focus:ring-[#f7a6df]/50 focus:border-[#f7a6df]"
                     >
-                      <option value="General Greeting / Say Hello">General Greeting / Say Hello</option>
-                      <option value="Crochet Plushie Inquiry">Crochet Plushie Inquiry</option>
-                      <option value="Web Design & School Projects">Web Design & School Projects</option>
-                      <option value="Other / Collaboration">Other / Collaboration</option>
+                      <option value="" disabled>Select a reason</option>
+                      <option value="Question">Question</option>
+                      <option value="Feedback">Feedback</option>
+                      <option value="Collaboration">Collaboration</option>
+                      <option value="Other">Other</option>
                     </select>
                   </div>
 
@@ -285,7 +313,7 @@ export const ContactSection = () => {
                   </div>
 
                   {errorMessage && (
-                    <div className="p-3 rounded-lg bg-rose-50 border border-rose-200 text-rose-700 text-xs">
+                    <div role="alert" className="p-3 rounded-lg bg-rose-50 border border-rose-200 text-rose-700 text-xs">
                       {errorMessage}
                     </div>
                   )}

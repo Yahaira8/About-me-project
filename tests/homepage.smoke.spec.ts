@@ -116,39 +116,119 @@ test('trivia shows the final score and resets when played again', async ({ page 
   await expect(trivia.getByText('Current Score: 0')).toBeVisible();
 });
 
-test('valid contact message is saved locally when sending service is unavailable', async ({ page }) => {
-  let contactRequests = 0;
-  await page.route('**/api/contact', (route) => {
-    contactRequests += 1;
-    return route.abort('failed');
+test('contact form only confirms a server-saved message and retains input on failure', async ({ page }) => {
+  const requests: Record<string, string>[] = [];
+  let shouldFail = true;
+  await page.route('**/api/contact', async (route) => {
+    requests.push(route.request().postDataJSON());
+    await route.fulfill({
+      status: shouldFail ? 503 : 201,
+      contentType: 'application/json',
+      body: shouldFail
+        ? JSON.stringify({ error: 'Message storage is temporarily unavailable.' })
+        : JSON.stringify({ success: true }),
+    });
   });
   await page.goto('/');
 
   const initialTimeOrigin = await page.evaluate(() => performance.timeOrigin);
-  let loadEvents = 0;
-  page.on('load', () => {
-    loadEvents += 1;
-  });
-
-  await page.locator('#sender-name-input').fill('Test Visitor');
+  await page.locator('#sender-first-name-input').fill('Test');
+  await page.locator('#sender-last-name-input').fill('Visitor');
   await page.locator('#sender-email-input').fill('visitor@example.com');
+  await page.locator('#sender-reason-select').selectOption('Question');
   await page.locator('#sender-message-input').fill('Hello from the browser test.');
   await page.locator('#contact-form-submit-btn').click();
 
-  await expect(page.getByRole('heading', { name: 'Thank you for reaching out!' })).toBeVisible();
-  expect(contactRequests).toBe(1);
-  expect(await page.evaluate(() => performance.timeOrigin)).toBe(initialTimeOrigin);
-  expect(loadEvents).toBe(0);
-
-  const storedMessages = await page.evaluate(() =>
-    JSON.parse(localStorage.getItem('contact_messages') ?? '[]'),
-  );
-  expect(storedMessages).toHaveLength(1);
-  expect(storedMessages[0]).toMatchObject({
-    name: 'Test Visitor',
+  await expect(page.getByRole('alert')).toContainText('Message storage is temporarily unavailable.');
+  await expect(page.getByRole('heading', { name: 'Thank you for reaching out!' })).toHaveCount(0);
+  await expect(page.locator('#sender-first-name-input')).toHaveValue('Test');
+  expect(requests).toEqual([{
+    firstName: 'Test',
+    lastName: 'Visitor',
     email: 'visitor@example.com',
+    reason: 'Question',
     message: 'Hello from the browser test.',
-    status: 'new',
-    replied: false,
+  }]);
+
+  shouldFail = false;
+  await page.locator('#contact-form-submit-btn').click();
+  await expect(page.getByRole('heading', { name: 'Thank you for reaching out!' })).toBeVisible();
+  expect(requests).toHaveLength(2);
+  expect(await page.evaluate(() => performance.timeOrigin)).toBe(initialTimeOrigin);
+  expect(await page.evaluate(() => localStorage.getItem('contact_messages'))).toBeNull();
+
+  await page.getByRole('button', { name: 'Send another note' }).click();
+  await expect(page.locator('#sender-first-name-input')).toHaveValue('');
+  await expect(page.locator('#sender-reason-select')).toHaveValue('');
+});
+
+test('admin filters, metrics, chart and reply status use authenticated server records', async ({ page }) => {
+  const records = [
+    {
+      id: '00000000-0000-4000-8000-000000000002',
+      firstName: 'Newer',
+      lastName: 'Visitor',
+      email: 'newer@example.com',
+      reason: 'Question',
+      message: 'Newer note',
+      timestamp: '2026-09-28T12:00:00.000Z',
+      status: 'new',
+      replied: false,
+      repliedAt: null,
+    },
+    {
+      id: '00000000-0000-4000-8000-000000000001',
+      firstName: 'Older',
+      lastName: 'Visitor',
+      email: 'older@example.com',
+      reason: 'Feedback',
+      message: 'Older note',
+      timestamp: '2026-09-27T12:00:00.000Z',
+      status: 'replied',
+      replied: true,
+      repliedAt: '2026-09-28T10:00:00.000Z',
+    },
+  ];
+  let authorizedReads = 0;
+  await page.route('**/api/admin/verify', (route) => route.fulfill({
+    status: 200,
+    contentType: 'application/json',
+    body: JSON.stringify({ authenticated: true, token: 'synthetic-test-token' }),
+  }));
+  await page.route('**/api/contact', (route) => {
+    expect(route.request().headers().authorization).toBe('Bearer synthetic-test-token');
+    authorizedReads += 1;
+    return route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(records) });
   });
+  await page.route('**/api/contact/reply', (route) => {
+    expect(route.request().headers().authorization).toBe('Bearer synthetic-test-token');
+    expect(route.request().postDataJSON()).toEqual({ id: records[0].id });
+    const updated = {
+      ...records[0], status: 'replied', replied: true, repliedAt: '2026-09-28T13:00:00.000Z',
+    };
+    return route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({ success: true, item: updated }),
+    });
+  });
+
+  await page.goto('/admin');
+  await page.locator('#admin-password-input').fill('synthetic password intercepted by test');
+  await page.locator('#admin-login-btn').click();
+  await expect(page.getByText('Reply Rate')).toBeVisible();
+  await expect(page.getByText('Reply Rate').locator('..')).toContainText('50%');
+  await expect(page.getByRole('heading', { name: 'Messages by Reason' })).toBeVisible();
+  await expect(page.getByRole('list', { name: 'Message counts by reason' })).toContainText('Question');
+  const ids = await page.locator('span.font-mono').allTextContents();
+  expect(ids[0]).toContain(records[0].id);
+  expect(authorizedReads).toBeGreaterThan(0);
+
+  await page.getByRole('button', { name: 'New (1)' }).click();
+  await expect(page.locator('span.font-mono')).toHaveCount(1);
+  await page.getByRole('button', { name: 'Mark as Replied' }).click();
+  await expect(page.getByText('Reply Rate').locator('..')).toContainText('100%');
+  await expect(page.getByRole('button', { name: 'New (0)' })).toBeVisible();
+  await page.getByRole('button', { name: 'Replied (2)' }).click();
+  await expect(page.locator('span.font-mono')).toHaveCount(2);
 });

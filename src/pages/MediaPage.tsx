@@ -272,7 +272,7 @@ export const MediaPage = () => {
         <div className="text-center max-w-3xl mx-auto mb-10">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#ffdef5] border border-[#f7a6df]/60 text-[#831859] text-xs font-semibold uppercase tracking-wider mb-3">
             <Sparkles className="w-3.5 h-3.5 text-[#831859]" />
-            <span>Curated Showcase • 10 Media Cards</span>
+            <span>Curated Showcase • {mediaGalleryItems.length} Media Cards</span>
           </div>
           <h1
             id="media-page-heading"
