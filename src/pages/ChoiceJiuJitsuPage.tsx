@@ -75,7 +75,7 @@ export const ChoiceJiuJitsuPage = () => {
             id="jiu-jitsu-heading"
             className="text-3xl sm:text-5xl font-serif font-bold text-stone-900 tracking-tight mb-4"
           >
-            Brazilian Jiu Jitsu: The Gentle Art
+            <span className="neon-flowing-glow">Brazilian Jiu Jitsu: The Gentle Art</span>
           </h1>
           <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
             How physical discipline on the mat strengthens mental resilience, problem solving, and composure under pressure.
@@ -83,7 +83,7 @@ export const ChoiceJiuJitsuPage = () => {
         </div>
 
         {/* Feature Banner with Belt Promotion Photo & Caption */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center mb-14 bg-white p-6 sm:p-8 rounded-2xl border border-[#f7a6df]/50 shadow-xs">
+        <div className="neon-card grid grid-cols-1 md:grid-cols-12 gap-8 items-center mb-14 bg-white p-6 sm:p-8 rounded-2xl shadow-xs">
           <div className="md:col-span-6 space-y-4">
             <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#ffdef5]/80 text-[#831859] text-xs font-bold uppercase tracking-wider">
               <Award className="w-3.5 h-3.5" />
@@ -113,7 +113,7 @@ export const ChoiceJiuJitsuPage = () => {
             <motion.div
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
               onClick={() => setIsModalOpen(true)}
-              className="group cursor-pointer rounded-2xl bg-white border-2 border-[#f7a6df]/60 hover:border-[#f7a6df] shadow-xs hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col"
+              className="neon-card group cursor-pointer rounded-2xl bg-white shadow-xs overflow-hidden flex flex-col"
             >
               {/* Media Container with Hover Zoom */}
               <div className="relative aspect-3/4 sm:aspect-4/3 w-full overflow-hidden bg-stone-100">
@@ -179,7 +179,7 @@ export const ChoiceJiuJitsuPage = () => {
               return (
                 <div
                   key={pillar.title}
-                  className="p-6 rounded-2xl bg-white border border-[#f7a6df]/50 hover:border-[#f7a6df] shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
+                  className="neon-card p-6 rounded-2xl bg-white shadow-xs flex flex-col justify-between"
                 >
                   <div>
                     <div className="w-10 h-10 rounded-xl bg-[#ffdef5] text-[#831859] flex items-center justify-center mb-4">
@@ -199,7 +199,7 @@ export const ChoiceJiuJitsuPage = () => {
         </div>
 
         {/* Connection to Nursing & Healthcare */}
-        <div className="p-6 sm:p-8 rounded-2xl bg-stone-900 text-stone-100 flex flex-col md:flex-row items-center gap-6">
+        <div className="neon-card bg-stone-900 p-6 sm:p-8 rounded-2xl text-stone-100 flex flex-col md:flex-row items-center gap-6">
           <div className="w-12 h-12 rounded-xl bg-[#f7a6df] text-stone-950 flex items-center justify-center flex-shrink-0">
             <Compass className="w-6 h-6" />
           </div>
@@ -231,7 +231,7 @@ export const ChoiceJiuJitsuPage = () => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-3xl bg-white rounded-2xl overflow-hidden shadow-2xl border border-[#f7a6df]/50 flex flex-col max-h-[90vh]"
+              className="neon-card w-full max-w-3xl bg-white rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
             >
               {/* Modal Header */}
               <div className="p-4 border-b border-stone-100 flex items-center justify-between bg-stone-50">

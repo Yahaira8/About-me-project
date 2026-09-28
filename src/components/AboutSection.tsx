@@ -15,7 +15,7 @@ export const AboutSection = () => {
             id="about-section-heading"
             className="text-3xl sm:text-4xl font-serif font-bold text-stone-900 tracking-tight"
           >
-            About Yahaira
+            <span className="neon-flowing-glow">About Yahaira</span>
           </h2>
         </div>
 
@@ -29,7 +29,7 @@ export const AboutSection = () => {
             ))}
 
             <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="p-4 rounded-xl bg-white border border-[#f7a6df]/40 shadow-2xs">
+              <div className="neon-card p-4 rounded-xl bg-white shadow-2xs">
                 <div className="w-8 h-8 rounded-lg bg-[#ffdef5] text-[#831859] border border-[#f7a6df]/50 flex items-center justify-center mb-3">
                   <Compass className="w-4 h-4" />
                 </div>
@@ -41,7 +41,7 @@ export const AboutSection = () => {
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl bg-white border border-[#f7a6df]/40 shadow-2xs">
+              <div className="neon-card p-4 rounded-xl bg-white shadow-2xs">
                 <div className="w-8 h-8 rounded-lg bg-[#ffdef5] text-[#831859] border border-[#f7a6df]/50 flex items-center justify-center mb-3">
                   <Heart className="w-4 h-4" />
                 </div>
@@ -59,7 +59,7 @@ export const AboutSection = () => {
           <div className="lg:col-span-5 space-y-6">
             <div
               id="journey-timeline-card"
-              className="p-6 rounded-2xl bg-white border border-[#f7a6df]/40 shadow-xs"
+              className="neon-card p-6 rounded-2xl bg-white shadow-xs"
             >
               <div className="flex items-center gap-2 mb-5">
                 <Award className="w-4 h-4 text-[#831859]" />
@@ -92,34 +92,6 @@ export const AboutSection = () => {
                   </div>
                 ))}
               </div>
-            </div>
-
-            {/* Featured Media Showcase (Home page: 2nd required media) */}
-            <div
-              id="home-featured-media-card"
-              className="p-5 rounded-2xl bg-white border border-[#f7a6df]/50 shadow-xs"
-            >
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-xs font-bold text-[#831859] uppercase tracking-wider">
-                  Featured Creative Media
-                </span>
-                <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#ffdef5] text-[#831859] border border-[#f7a6df]/50">
-                  Crochet Craft
-                </span>
-              </div>
-              <div className="relative rounded-xl overflow-hidden aspect-video mb-3 border border-stone-200">
-                <img
-                  src={profileData.featuredMediaUrl}
-                  alt="Yahaira Papin - Handmade Crochet Plushie Art"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <h4 className="text-sm font-bold text-stone-900 mb-1">
-                Handmade Crochet Plushie Artwork
-              </h4>
-              <p className="text-xs text-stone-600 leading-relaxed">
-                {profileData.featuredMediaCaption}
-              </p>
             </div>
           </div>
         </div>

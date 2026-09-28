@@ -28,7 +28,7 @@ export const SkillsSection = () => {
             id="skills-section-heading"
             className="text-3xl sm:text-4xl font-serif font-bold text-stone-900 tracking-tight mb-3"
           >
-            Skills & Craft
+            <span className="neon-flowing-glow">Skills & Craft</span>
           </h2>
           <p className="text-stone-600 text-sm sm:text-base">
             A combination of modern web technologies, interface aesthetics, and personal passions that shape my work.
@@ -41,7 +41,7 @@ export const SkillsSection = () => {
             <div
               key={index}
               id={`skills-category-card-${index}`}
-              className="p-6 rounded-2xl bg-stone-50 border border-[#f7a6df]/30 hover:border-[#f7a6df]/70 transition-colors flex flex-col justify-between"
+              className="neon-card p-6 rounded-2xl bg-stone-50 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center gap-3 mb-5">

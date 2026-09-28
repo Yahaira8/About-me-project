@@ -37,7 +37,7 @@ export const Hero = () => {
               id="hero-heading"
               className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-stone-900 tracking-tight leading-[1.15] mb-4"
             >
-              {profileData.name}
+              Hi, I'm <span className="neon-flowing-glow">{profileData.name}</span>
             </h1>
 
             {/* Subtitle */}
@@ -113,7 +113,7 @@ export const Hero = () => {
           >
             <div
               id="hero-profile-card"
-              className="relative p-6 rounded-2xl bg-white border border-[#f7a6df]/50 shadow-xs"
+              className="neon-card relative p-6 rounded-2xl bg-white shadow-xs"
             >
               {/* Decorative Accent */}
               <div className="absolute top-4 right-4 text-[#831859]">

@@ -51,7 +51,7 @@ export const InteractiveTrivia = () => {
             id="trivia-section-heading"
             className="text-3xl font-serif font-bold text-stone-900 tracking-tight mb-2"
           >
-            How Well Do You Know Yahaira?
+            <span className="neon-flowing-glow">How Well Do You Know Yahaira?</span>
           </h2>
           <p className="text-stone-600 text-sm">
             Test your knowledge of Yahaira's creative projects, themes, and web experiences.
@@ -61,7 +61,7 @@ export const InteractiveTrivia = () => {
         {/* Trivia Container */}
         <div
           id="interactive-trivia-box"
-          className="p-6 sm:p-8 rounded-2xl bg-stone-50 border border-[#f7a6df]/40 shadow-sm"
+          className="neon-card p-6 sm:p-8 rounded-2xl bg-stone-50 shadow-sm"
         >
           {!isCompleted ? (
             <div>

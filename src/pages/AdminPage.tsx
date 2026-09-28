@@ -135,7 +135,7 @@ export const AdminPage = () => {
             id="admin-heading"
             className="text-3xl sm:text-4xl font-serif font-bold text-stone-900 tracking-tight mb-3"
           >
-            Contact Messages Dashboard
+            <span className="neon-flowing-glow">Contact Messages Dashboard</span>
           </h1>
           <p className="text-xs sm:text-sm text-stone-600">
             Secure administrative console for reviewing incoming student notes, inquiries, and status tracking.
@@ -144,7 +144,7 @@ export const AdminPage = () => {
 
         {!isAuthenticated ? (
           /* Authentication Screen */
-          <div className="max-w-md mx-auto p-6 sm:p-8 bg-white rounded-2xl border border-[#f7a6df]/50 shadow-xs">
+          <div className="neon-card max-w-md mx-auto p-6 sm:p-8 bg-white rounded-2xl shadow-xs">
             <div className="w-12 h-12 rounded-xl bg-[#ffdef5] text-[#831859] flex items-center justify-center mx-auto mb-4 border border-[#f7a6df]">
               <Lock className="w-6 h-6" />
             </div>
@@ -294,7 +294,7 @@ export const AdminPage = () => {
                   return (
                     <div
                       key={record.id}
-                      className="p-5 rounded-2xl bg-white border border-[#f7a6df]/40 shadow-xs space-y-3"
+                      className="neon-card p-5 rounded-2xl bg-white shadow-xs space-y-3"
                     >
                       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-stone-100 pb-2">
                         <div className="flex items-center gap-2">

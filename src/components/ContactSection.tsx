@@ -87,7 +87,7 @@ export const ContactSection = () => {
                 id="contact-section-heading"
                 className="text-3xl sm:text-4xl font-serif font-bold text-stone-900 tracking-tight mb-3"
               >
-                Let's Get in Touch
+                <span className="neon-flowing-glow">Let's Get in Touch</span>
               </h2>
               <p className="text-stone-600 text-sm leading-relaxed">
                 Whether you have a collaborative project idea, feedback on my interactive apps, or simply want to say hello, feel free to reach out!
@@ -96,7 +96,7 @@ export const ContactSection = () => {
 
             <div className="space-y-3 pt-2">
               {/* Email Card */}
-              <div className="p-4 rounded-xl bg-white border border-[#f7a6df]/30 flex items-center justify-between gap-3 shadow-2xs">
+              <div className="neon-card p-4 rounded-xl bg-white flex items-center justify-between gap-3 shadow-2xs">
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-lg bg-[#ffdef5] text-[#831859] border border-[#f7a6df]/50 flex items-center justify-center">
                     <Mail className="w-4 h-4" />
@@ -136,7 +136,7 @@ export const ContactSection = () => {
                 href={profileData.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 rounded-xl bg-white border border-[#f7a6df]/30 hover:border-[#f7a6df]/70 flex items-center justify-between gap-3 shadow-2xs transition-colors group"
+                className="neon-card p-4 rounded-xl bg-white flex items-center justify-between gap-3 shadow-2xs transition-colors group block"
               >
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-lg bg-[#ffdef5] text-[#831859] border border-[#f7a6df]/50 flex items-center justify-center">
@@ -157,7 +157,7 @@ export const ContactSection = () => {
               </a>
 
               {/* Location Card */}
-              <div className="p-4 rounded-xl bg-white border border-[#f7a6df]/30 flex items-center gap-3 shadow-2xs">
+              <div className="neon-card p-4 rounded-xl bg-white flex items-center gap-3 shadow-2xs">
                 <div className="w-9 h-9 rounded-lg bg-[#ffdef5] text-[#831859] border border-[#f7a6df]/50 flex items-center justify-center">
                   <MapPin className="w-4 h-4" />
                 </div>
@@ -175,7 +175,7 @@ export const ContactSection = () => {
 
           {/* Message Form */}
           <div className="md:col-span-7">
-            <div className="p-6 sm:p-8 rounded-2xl bg-white border border-[#f7a6df]/40 shadow-sm">
+            <div className="neon-card p-6 sm:p-8 rounded-2xl bg-white shadow-sm">
               <h3 className="text-lg font-bold text-stone-900 mb-1">
                 Send a Direct Message
               </h3>

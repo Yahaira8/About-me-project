@@ -73,7 +73,7 @@ export const ProjectsSection = () => {
               id="projects-section-heading"
               className="text-3xl sm:text-4xl font-serif font-bold text-stone-900 tracking-tight"
             >
-              Featured Projects
+              <span className="neon-flowing-glow">Featured Projects</span>
             </h2>
           </div>
 
@@ -103,7 +103,7 @@ export const ProjectsSection = () => {
             <div
               key={project.id}
               id={`project-card-${project.id}`}
-              className="p-6 rounded-2xl bg-white border border-[#f7a6df]/30 hover:border-[#f7a6df]/70 transition-all shadow-2xs hover:shadow-xs flex flex-col justify-between"
+              className="neon-card p-6 rounded-2xl bg-white flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-start justify-between gap-3 mb-3">
@@ -186,7 +186,7 @@ export const ProjectsSection = () => {
             aria-modal="true"
             aria-labelledby="project-detail-modal-title"
             aria-describedby="project-detail-modal-description"
-            className="w-full max-w-lg bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-[#f7a6df]/50 relative"
+            className="neon-card w-full max-w-lg bg-white rounded-2xl p-6 sm:p-8 shadow-xl relative"
             onClick={(e) => e.stopPropagation()}
           >
             <button

@@ -25,7 +25,7 @@ export const MediaPage = () => {
             id="media-page-heading"
             className="text-3xl sm:text-5xl font-serif font-bold text-stone-900 tracking-tight mb-4"
           >
-            Media & Creative Gallery
+            <span className="neon-flowing-glow">Media & Creative Gallery</span>
           </h1>
           <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
             A visual documentation of high school web design milestones, Brazilian Jiu Jitsu training discipline, handmade crochet craft plushies, and aspirations toward compassionate healthcare.
@@ -102,7 +102,7 @@ export const MediaPage = () => {
               transition={{ duration: 0.35, delay: index * 0.05 }}
               whileHover={{ y: -6, transition: { duration: 0.2 } }}
               onClick={() => setActiveMedia(item)}
-              className="group cursor-pointer rounded-2xl bg-white border border-[#f7a6df]/50 hover:border-[#f7a6df] shadow-xs hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col"
+              className="neon-card group cursor-pointer rounded-2xl bg-white shadow-xs overflow-hidden flex flex-col"
             >
               {/* Media Container with Hover Zoom */}
               <div className="relative aspect-video w-full overflow-hidden bg-stone-100 border-b border-stone-100">
@@ -193,7 +193,7 @@ export const MediaPage = () => {
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.95, opacity: 0 }}
                 onClick={(e) => e.stopPropagation()}
-                className="w-full max-w-3xl bg-white rounded-2xl overflow-hidden shadow-2xl border border-stone-200 flex flex-col max-h-[90vh]"
+                className="neon-card w-full max-w-3xl bg-white rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
               >
                 {/* Modal Header */}
                 <div className="p-4 border-b border-stone-100 flex items-center justify-between bg-stone-50">

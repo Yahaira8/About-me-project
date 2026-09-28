@@ -1,4 +1,9 @@
+import fs from 'node:fs';
 import { defineConfig, devices } from '@playwright/test';
+
+const chromiumPath =
+  process.env.PLAYWRIGHT_CHROMIUM_PATH ||
+  (fs.existsSync('/repl/tools/bin/chromium') ? '/repl/tools/bin/chromium' : undefined);
 
 export default defineConfig({
   testDir: './tests',
@@ -11,9 +16,13 @@ export default defineConfig({
     baseURL: 'http://127.0.0.1:5000',
     trace: 'on-first-retry',
     ...devices['Desktop Chrome'],
-    launchOptions: {
-      executablePath: process.env.PLAYWRIGHT_CHROMIUM_PATH ?? '/repl/tools/bin/chromium',
-    },
+    ...(chromiumPath
+      ? {
+          launchOptions: {
+            executablePath: chromiumPath,
+          },
+        }
+      : {}),
   },
   webServer: {
     command: 'npm run dev',

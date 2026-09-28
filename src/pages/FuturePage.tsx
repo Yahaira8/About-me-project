@@ -78,7 +78,7 @@ export const FuturePage = () => {
             id="future-page-heading"
             className="text-3xl sm:text-5xl font-serif font-bold text-stone-900 tracking-tight mb-4"
           >
-            A 5-Year Vision into Healthcare
+            <span className="neon-flowing-glow">A 5-Year Vision into Healthcare</span>
           </h1>
           <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
             From high school web design and mat discipline to becoming a compassionate Registered Nurse (RN) dedicated to uplifting patient lives.
@@ -88,7 +88,7 @@ export const FuturePage = () => {
         {/* Long-Term Goal Banner */}
         <div
           id="long-term-goal-banner"
-          className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-white to-[#ffdef5]/40 border-2 border-[#f7a6df] shadow-xs mb-12"
+          className="neon-card-gradient p-6 sm:p-8 rounded-2xl shadow-xs mb-12"
         >
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="space-y-2">
@@ -121,7 +121,7 @@ export const FuturePage = () => {
                 {/* Milestone Node */}
                 <div className="absolute left-1.5 sm:left-5.5 top-5 w-6 h-6 rounded-full bg-white border-4 border-[#f7a6df] shadow-xs flex items-center justify-center group-hover:scale-125 transition-transform"></div>
 
-                <div className="p-6 rounded-2xl bg-white border border-[#f7a6df]/50 hover:border-[#f7a6df] shadow-xs hover:shadow-md transition-all">
+                <div className="neon-card p-6 rounded-2xl bg-white shadow-xs">
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                     <div className="inline-flex items-center gap-2">
                       <div className="w-7 h-7 rounded-lg bg-[#ffdef5] text-[#831859] flex items-center justify-center">
@@ -165,7 +165,7 @@ export const FuturePage = () => {
         </div>
 
         {/* Inspiration & Mentorship Card */}
-        <div className="mt-14 p-6 sm:p-8 rounded-2xl bg-white border border-stone-200 shadow-xs flex flex-col md:flex-row items-center gap-6">
+        <div className="neon-card mt-14 p-6 sm:p-8 rounded-2xl bg-white shadow-xs flex flex-col md:flex-row items-center gap-6">
           <div className="w-full md:w-1/3 aspect-video rounded-xl overflow-hidden border border-stone-200">
             <img
               src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80"

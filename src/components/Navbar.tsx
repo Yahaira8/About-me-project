@@ -63,7 +63,7 @@ export const Navbar = ({ currentPage, onNavigate }: NavbarProps) => {
             YP
           </div>
           <div className="flex flex-col">
-            <span className="font-semibold text-stone-900 text-sm sm:text-base leading-tight">
+            <span className="font-bold text-stone-900 text-sm sm:text-base leading-tight neon-flowing-glow">
               {profileData.name}
             </span>
             <span className="text-[11px] text-[#831859] font-medium">
