@@ -1,2 +1,3 @@
 - [Preview-origin asset checks](preview-origin-assets.md) — External images may fail in localhost screenshots but load through the Replit preview domain; compare origins before calling them broken.
 - [App Storage initialization](app-storage-initialization.md) — Resolve the default bucket inside an awaited operation; eager SDK construction can reject before requests start.
+- [Vite and Replit-generated files](vite-replit-generated-files.md) — Watching internal workflow logs can cause full page reloads and erase in-memory admin sessions.

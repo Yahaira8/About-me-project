@@ -9,7 +9,15 @@ export default defineConfig({
     port: 5000,
     allowedHosts: true,
     watch: {
-      ignored: ['**/.local/**', '**/.cache/**'],
+      ignored: [
+        '**/.local/**',
+        '**/.cache/**',
+        '**/.agents/**',
+        '**/test-results/**',
+        '**/tests/**',
+        '**/server/**',
+        '**/replit.md',
+      ],
     },
   },
 });
