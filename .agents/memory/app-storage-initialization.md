@@ -7,4 +7,4 @@ Create Replit App Storage clients when a storage operation begins, and surface i
 
 **Why:** The SDK starts resolving the default bucket as soon as a client is constructed. Without an assigned bucket, eager construction during server startup can leave a rejected initialization promise unhandled.
 
-**How to apply:** When refactoring server setup or adding storage-dependent features, keep client creation inside an awaited operation and verify the no-bucket path fails explicitly without crashing the web server.
+**How to apply:** When refactoring server setup or adding storage-dependent features, keep client creation inside an awaited operation and verify the no-bucket path fails explicitly without crashing the web server. After assigning a default bucket in the editor, check a fresh read-only operation before assuming a server restart is required.

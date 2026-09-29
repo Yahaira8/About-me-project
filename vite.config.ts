@@ -13,6 +13,7 @@ export default defineConfig({
         '**/.local/**',
         '**/.cache/**',
         '**/.agents/**',
+        '**/.replit',
         '**/test-results/**',
         '**/tests/**',
         '**/server/**',
